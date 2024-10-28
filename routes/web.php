@@ -9,4 +9,5 @@ Route::get('/', function () {
 
 Route::prefix('/admin')->namespace('App\Http\Controllers\Admin')->group(function () {
     Route::match(['get', 'post'], 'dashboard', [AdminController::class, 'dashboard']);
+    Route::match(['get', 'post'], 'login', [AdminController::class, 'login']);
 });
