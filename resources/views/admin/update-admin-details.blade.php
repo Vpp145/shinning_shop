@@ -12,7 +12,7 @@
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="dashboard">Home</a></li>
-                            <li class="breadcrumb-item active">Update Password</li>
+                            <li class="breadcrumb-item active">Update Admin Details</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -29,7 +29,7 @@
                         <!-- general form elements -->
                         <div class="card card-primary">
                             <div class="card-header">
-                                <h3 class="card-title">Update Password</h3>
+                                <h3 class="card-title">Update Admin Details</h3>
                             </div>
                             <!-- /.card-header -->
                             @if (Session::has('error_message'))
@@ -48,29 +48,37 @@
                                     </button>
                                 </div>
                             @endif
+                            @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif
                             <!-- form start -->
-                            <form method="post" action="{{ url('admin/update-password') }}">@csrf
+                            <form method="post" action="{{ url('admin/update-admin-details') }}">@csrf
                                 <div class="card-body">
                                     <div class="form-group">
-                                        <label for="exampleInputEmail1">Email address</label>
-                                        <input class="form-control" id="exampleInputEmail1"
-                                            value="{{ Auth::guard('admin')->user()->email }}" readonly>
+                                        <label for="admin_email">Email address</label>
+                                        <input class="form-control" id="admin_email"
+                                            value="{{ Auth::guard('admin')->user()->email }}" readonly
+                                            style="background-color: #666">
                                     </div>
                                     <div class="form-group">
-                                        <label for="current_pwd">Current Password</label>
-                                        <input type="password" class="form-control" id="current_pwd" name="current_pwd"
-                                            placeholder="Current Password">
-                                        <div id="verifyCurrentPwd"></div>
+                                        <label for="admin_name">Name</label>
+                                        <input type="text" class="form-control" id="admin_name" name="admin_name"
+                                            value="{{ Auth::guard('admin')->user()->name }}">
                                     </div>
                                     <div class="form-group">
-                                        <label for="new_pwd">New Password</label>
-                                        <input type="password" class="form-control" id="new_pwd" name="new_pwd"
-                                            placeholder="New Password">
+                                        <label for="admin_mobile">Mobile</label>
+                                        <input type="text" name="admin_mobile" class="form-control" id="admin_mobile"
+                                            value="{{ Auth::guard('admin')->user()->mobile }}" />
                                     </div>
                                     <div class="form-group">
-                                        <label for="confirm_pwd">Confirm Password</label>
-                                        <input type="password" class="form-control" id="confirm_pwd" name="confirm_pwd"
-                                            placeholder="Confirm Password">
+                                        <label for="admin_image">Image</label>
+                                        <input type="file" class="form-control" id="admin_image" name="admin_image" />
                                     </div>
                                 </div>
                                 <!-- /.card-body -->
