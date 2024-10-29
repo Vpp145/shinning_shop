@@ -9,13 +9,11 @@ use Auth;
 
 class AdminController extends Controller
 {
-    public function dashboard()
-    {
+    public function dashboard() {
         return view('admin.dashboard');
     }
 
-    public function login(Request $request)
-    {
+    public function login(Request $request) {
         if($request->isMethod('post')) {
             $data = $request->all();
             // echo '<pre>'; print_r($data); die;
@@ -46,9 +44,12 @@ class AdminController extends Controller
         return view('admin.login');
     }
 
-    public function logout()
-    {
+    public function logout() {
         Auth::guard('admin')->logout();
         return redirect('admin/login');
+    }
+
+    public function updatePassword(Request $request) {
+        return view('admin.update-password');
     }
 }
