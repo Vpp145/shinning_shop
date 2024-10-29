@@ -31,6 +31,13 @@ class AdminController extends Controller
             $request->validate($rules, $customMessages);
 
             if(Auth::guard('admin')->attempt(['email' => $data['email'], 'password' => $data['password']])) {
+                if(!empty($_POST['remember'])) {
+                    setcookie('email', $_POST['email'], time() + 3600);
+                    setcookie('password', $_POST['password'], time() + 3600);
+                } else {
+                    setcookie('email', '');
+                    setcookie('password', '');
+                }
                 return redirect('/admin/dashboard');
             } else {
                 return redirect()->back()->with('error_message', 'Invalid Email or Password!!');
