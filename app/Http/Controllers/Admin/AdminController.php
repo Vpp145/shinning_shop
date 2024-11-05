@@ -117,4 +117,10 @@ class AdminController extends Controller
         }
         return view('admin.update-admin-details');
     }
+
+    public function subadmins() {
+        Session::put('page', 'sub-admins');
+        $subadmins = Admin::where('type', 'subadmin')->get();
+        return view('admin.subadmins.subadmins')->with(compact('subadmins'));
+    }
 }

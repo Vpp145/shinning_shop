@@ -45,7 +45,7 @@
                 </li>
                 @if (Session::get('page') == 'update-password' ||
                         Session::get('page') == 'update-admin-details' ||
-                        Session::get('page') == 'subadmins')
+                        Session::get('page') == 'sub-admins')
                     <?php $active = 'active'; ?>
                 @else
                     <?php $active = ''; ?>
@@ -81,13 +81,13 @@
                                 <p>Update Details</p>
                             </a>
                         </li>
-                        @if (Session::get('page') == 'subadmins')
+                        @if (Session::get('page') == 'sub-admins')
                             <?php $active = 'active'; ?>
                         @else
                             <?php $active = ''; ?>
                         @endif
                         <li class="nav-item">
-                            <a href="{{ url('admin/subadmins') }}" class="nav-link">
+                            <a href="{{ url('admin/sub-admins') }}" class="nav-link {{ $active }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Sub Admins</p>
                             </a>
