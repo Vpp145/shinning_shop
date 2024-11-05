@@ -43,7 +43,6 @@
     <script src="{{ asset('admin/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <!-- AdminLTE -->
     <script src="{{ asset('admin/js/adminlte.js') }}"></script>
-
     <!-- OPTIONAL SCRIPTS -->
     <script src="{{ asset('admin/plugins/chart.js/Chart.min.js') }}"></script>
     <!-- AdminLTE for demo purposes -->
@@ -52,6 +51,15 @@
     <script src="{{ asset('admin/js/pages/dashboard3.js') }}"></script>
     <!-- Custom JS -->
     <script src="{{ asset('admin/js/custom.js') }}"></script>
+    <!-- DataTables  & Plugins -->
+    <script src="{{ asset('admin/plugins/datatables/jquery.dataTables.js') }}"></script>
+    <script src="{{ asset('admin/plugins/datatables-bs4/js/dataTables.bootstrap4.js') }}"></script>
+    <script src="{{ asset('admin/plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
+    <script>
+        $(function() {
+            $('#cmspages').DataTable();
+        });
+    </script>
 </body>
 
 </html>

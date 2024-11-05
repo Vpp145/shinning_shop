@@ -94,6 +94,33 @@
                         </li>
                     </ul>
                 </li>
+                @if (Session::get('page') == 'cms-pages')
+                    @php $active = 'active' @endphp
+                @else
+                    @php $active = '' @endphp
+                @endif
+                <li class="nav-item menu-open">
+                    <a href="#" class="nav-link {{ $active }}">
+                        <i class="nav-icon fas fa-file"></i>
+                        <p>
+                            Pages
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        @if (Session::get('page') == 'cms-pages')
+                            @php $active = 'active' @endphp
+                        @else
+                            @php $active = '' @endphp
+                        @endif
+                        <li class="nav-item">
+                            <a href="{{ url('admin/cms-pages') }}" class="nav-link {{ $active }}">
+                                <i class="nav-icon fas fa-copy"></i>
+                                <p>CMS Pages</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
