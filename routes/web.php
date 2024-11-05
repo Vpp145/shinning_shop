@@ -13,11 +13,12 @@ Route::prefix('/admin')->namespace('App\Http\Controllers\Admin')->group(function
     Route::group(['middleware' => ['admin']], function () {
         Route::match(['get', 'post'], 'dashboard', [AdminController::class, 'dashboard']);
         Route::match(['get', 'post'], 'update-password', [AdminController::class, 'updatePassword']);
-        Route::post('check-current-password', [AdminController::class, 'check-current-password']);
+        Route::post('check-current-password', [AdminController::class, 'checkCurrentPassword']);
         Route::match(['get', 'post'], 'update-admin-details', [AdminController::class, 'updateAdminDetails']);
         Route::get('logout', [AdminController::class, 'logout']);
 
         //cms-pages
         Route::get('cms-pages', [CmsController::class, 'index']);
+        Route::post('update-cms-page-status', [CmsController::class, 'update']);
     });
 });
