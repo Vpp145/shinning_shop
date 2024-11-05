@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('admin/css/adminlte.min.css') }}">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="{{ asset('admin/plugins/select2/css/select2.min.css') }}">
 </head>
 
 <body class="hold-transition sidebar-mini">
@@ -51,6 +53,11 @@
     <script src="{{ asset('admin/js/pages/dashboard3.js') }}"></script>
     <!-- Custom JS -->
     <script src="{{ asset('admin/js/custom.js') }}"></script>
+    <!-- Select2 -->
+    <script src="{{ asset('admin/plugins/select2/js/select2.full.min.js') }}"></script>
+    <script>
+        $('.select2').select2();
+    </script>
     <!-- DataTables  & Plugins -->
     <script src="{{ asset('admin/plugins/datatables/jquery.dataTables.js') }}"></script>
     <script src="{{ asset('admin/plugins/datatables-bs4/js/dataTables.bootstrap4.js') }}"></script>
