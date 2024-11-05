@@ -55,4 +55,34 @@ $(document).ready(function () {
             },
         });
     });
+
+    // confirm deletion of cms pages
+    // $(".confirmDelete").click(function () {
+    //     var name = $(this).attr("name");
+    //     if (confirm("Are you sure you want to delete " + name + "?")) {
+    //         return true;
+    //     }
+    //     return false;
+    // });
+
+    // confirm deletion of cms pages2
+    $(document).on("click", ".confirmDelete", function () {
+        var record = $(this).attr("record");
+        var recordid = $(this).attr("recordid");
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!",
+        }).then((result) => {
+            if (result.value) {
+                Swal.fire("Deleted!", "Your file has been deleted.", "success");
+                window.location.href =
+                    "/admin/delete-" + record + "/" + recordid;
+            }
+        });
+    });
 });

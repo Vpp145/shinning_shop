@@ -61,9 +61,9 @@
                                                     <a title="Edit CMS Page"
                                                         href="{{ url('admin/add-edit-cms-page/' . $page->id) }}"><i
                                                             class="fas fa-edit"></i></a>&nbsp;&nbsp;
-                                                    <a title="Delete CMS Page" href="javascript:void(0)"
-                                                        class="confirmDelete" record='page'
-                                                        recordid='{{ $page->id }}'><i
+                                                    <a class="confirmDelete" name="CMS Page" title="Delete CMS Page"
+                                                        href="javascript:void(0)" record="cms-page"
+                                                        recordid="{{ $page->id }}"><i
                                                             class="fas fa-trash"></i></a>&nbsp;&nbsp;
                                                     @if ($page->status == 1)
                                                         <a class="updateCmsPageStatus" id="page-{{ $page->id }}"
