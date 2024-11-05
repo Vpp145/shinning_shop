@@ -107,8 +107,9 @@ class CmsController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(CmsPage $cmsPage)
+    public function destroy($id)
     {
-        //
+        CmsPage::where(['id' => $id])->delete();
+        return redirect()->back()->with('success_message', 'CMS Page has been deleted successfully');
     }
 }
