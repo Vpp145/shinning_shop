@@ -8,6 +8,7 @@ use App\Models\Admin;
 use Validator;
 use Auth;
 use Hash;
+use Image;
 
 class AdminController extends Controller
 {
@@ -93,7 +94,21 @@ class AdminController extends Controller
             ];
             $request->validate($rules, $customMessages);
 
-            Admin::where('email', Auth::guard('admin')->user()->email)->update(['name' => $data['admin_name'], 'mobile' => $data['admin_mobile']]);
+            if($request->hasFile('admin_image')) {
+                $image_tmp = $request->file('admin_image');
+                if($image_tmp->isValid()) {
+                    $extension = $image_tmp->getClientOriginalExtension();
+                    $filename = rand(111, 99999).'.'.$extension;
+                    $image_path = 'admin/img/photos/'.$filename;
+                    Image::make($image_tmp)->save($image_path);
+                }
+            } else if($data['current_image'] != '') {
+                $filename = $data['current_image'];
+            } else {
+                $filename = '';
+            }
+
+            Admin::where('email', Auth::guard('admin')->user()->email)->update(['name' => $data['admin_name'], 'mobile' => $data['admin_mobile'], 'image' => $filename]);
             return redirect()->back()->with('success_message', 'Admin details updated successfully!!');
         }
         return view('admin.update-admin-details');
