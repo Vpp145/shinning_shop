@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Admin;
 use Validator;
+use Session;
 use Auth;
 use Hash;
 use Image;
@@ -13,6 +14,7 @@ use Image;
 class AdminController extends Controller
 {
     public function dashboard() {
+        Session::put('page', 'dashboard');
         return view('admin.dashboard');
     }
 
@@ -53,6 +55,7 @@ class AdminController extends Controller
     }
 
     public function updatePassword(Request $request) {
+        Session::put('page', 'update-password');
         if($request->isMethod('post')) {
             $data = $request->input();
             // echo '<pre>'; print_r($data); die;
@@ -80,6 +83,7 @@ class AdminController extends Controller
     }
 
     public function updateAdminDetails(Request $request) {
+        Session::put('page', 'update-admin-details');
         if($request->isMethod('post')) {
             $data = $request->all();
             $rules = [
