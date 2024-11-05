@@ -62,8 +62,8 @@
                                                     @else
                                                         <a class="updateCmsPageStatus" id="page-{{ $page->id }}"
                                                             page_id="{{ $page->id }}" href="javascript:void(0)"><i
-                                                                class="fas fa-toggle-off" aria-hidden="true"
-                                                                status="Inactive"></i></a>
+                                                                style="color:grey" class="fas fa-toggle-off"
+                                                                aria-hidden="true" status="Inactive"></i></a>
                                                     @endif
                                                 </td>
                                             </tr>
