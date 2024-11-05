@@ -32,6 +32,14 @@
                                     href="{{ url('admin/add-edit-cms-page') }}" class="btn btn-block btn-primary">Edit CMS
                                     Page</a>
                             </div>
+                            @if (Session::has('success_message'))
+                                <div class="alert alert-success alert-dismissible fade show mt-5" role="alert">
+                                    <strong>Success!</strong>{{ Session::get('success_message') }}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            @endif
                             <!-- /.card-header -->
                             <div class="card-body">
                                 <table id="cmspages" class="table table-bordered table-hover">

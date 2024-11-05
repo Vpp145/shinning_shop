@@ -58,22 +58,31 @@
                                 </div>
                             @endif
                             <!-- form start -->
-                            <form name="cmsForm" id="cmsForm" action="{{ url('admin/add-edit-cms-page') }}"
+                            <form name="cmsForm" id="cmsForm"
+                                @if (empty($cmsPage['id'])) action="{{ url('admin/add-edit-cms-page') }}" @else action="{{ url('admin/add-edit-cms-page/' . $cmsPage['id']) }}" @endif
                                 method="post">@csrf
                                 <div class="card-body">
                                     <div class="form-group">
                                         <label for="title">Title*</label>
                                         <input type="text" class="form-control" name="title" id="title"
-                                            placeholder="Enter Title...">
+                                            placeholder="Enter Title..."
+                                            @if (!empty($cmsPage['title'])) value="{{ $cmsPage['title'] }}" @else value="{{ old('title') }}" @endif>
                                     </div>
                                     <div class="form-group">
                                         <label for='url'>URL*</label>
                                         <input type="text" class="form-control" name="url" id="url"
-                                            placeholder="Enter URL...">
+                                            placeholder="Enter URL..."
+                                            @if (!empty($cmsPage['url'])) value="{{ $cmsPage['url'] }}" @else value="{{ old('url') }}" @endif>
                                     </div>
                                     <div class="form-group">
                                         <label for="description">Description*</label>
-                                        <textarea name="description" id="description" class="form-control" rows="3" placeholder="Enter Description..."></textarea>
+                                        <textarea name="description" id="description" class="form-control" rows="3" placeholder="Enter Description...">
+                                            @if (!empty($cmsPage['description']))
+{{ $cmsPage['description'] }}
+@else
+{{ old('description') }}
+@endif
+                                        </textarea>
                                     </div>
                                 </div>
 
