@@ -56,6 +56,8 @@ class CmsController extends Controller
             $message = 'CMS Page Added successfully';
         } else {
             $title = 'Edit CMS Page';
+            $cmsPage = CmsPage::find($id);
+            $message = 'CMS Page updated successfully';
         }
 
         if($request->isMethod('post')) {
@@ -81,7 +83,7 @@ class CmsController extends Controller
             return redirect('admin/cms-pages')->with('success_message', $message);
         }
 
-        return view('admin.pages.add_edit_cmspage')->with(compact('title'));
+        return view('admin.pages.add_edit_cmspage')->with(compact('title', 'cmsPage'));
     }
 
     /**
