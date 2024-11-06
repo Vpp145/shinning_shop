@@ -60,7 +60,21 @@
                                                 <td>{{ $subadmin->email }}</td>
                                                 <td>{{ $subadmin->type }}</td>
                                                 <td>
-
+                                                    <a class="confirmDelete" name="subadmin" title="Delete Subadmin"
+                                                        href="javascript:void(0)" record='subadmin'
+                                                        recordid="{{ $subadmin->id }}"><i
+                                                            class="fas fa-trash"></i></a>&nbsp;&nbsp;
+                                                    @if ($subadmin->status == 1)
+                                                        <a class="updateSubadminStatus" id="subadmin-{{ $subadmin->id }}"
+                                                            subadmin_id="{{ $subadmin->id }}" href="javascript:void(0)"><i
+                                                                class="fas fa-toggle-on" aria-hidden="true"
+                                                                status="Active"></i></a>
+                                                    @else
+                                                        <a class="updateSubadminStatus" id="subadmin-{{ $subadmin->id }}"
+                                                            subadmin_id="{{ $subadmin->id }}" href="javascript:void(0)"><i
+                                                                style="color:grey" class="fas fa-toggle-off"
+                                                                aria-hidden="true" status="Inactive"></i></a>
+                                                    @endif
                                                 </td>
                                             </tr>
                                         @endforeach
