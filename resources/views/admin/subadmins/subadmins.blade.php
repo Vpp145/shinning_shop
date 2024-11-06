@@ -60,13 +60,6 @@
                                                 <td>{{ $subadmin->email }}</td>
                                                 <td>{{ $subadmin->type }}</td>
                                                 <td>
-                                                    <a title="Edit Subadmin"
-                                                        href="{{ url('admin/add-edit-sub-admin/' . $subadmin->id) }}"><i
-                                                            class="fas fa-edit"></i></a>&nbsp;&nbsp;
-                                                    <a class="confirmDelete" name="subadmin" title="Delete Subadmin"
-                                                        href="javascript:void(0)" record='subadmin'
-                                                        recordid="{{ $subadmin->id }}"><i
-                                                            class="fas fa-trash"></i></a>&nbsp;&nbsp;
                                                     @if ($subadmin->status == 1)
                                                         <a class="updateSubadminStatus" id="subadmin-{{ $subadmin->id }}"
                                                             subadmin_id="{{ $subadmin->id }}" href="javascript:void(0)"><i
@@ -78,6 +71,17 @@
                                                                 style="color:grey" class="fas fa-toggle-off"
                                                                 aria-hidden="true" status="Inactive"></i></a>
                                                     @endif
+                                                    &nbsp;&nbsp;
+                                                    <a title="Edit Subadmin"
+                                                        href="{{ url('admin/add-edit-sub-admin/' . $subadmin->id) }}"><i
+                                                            class="fas fa-edit"></i></a>&nbsp;&nbsp;
+                                                    <a title="Set Permissions for sub admins"
+                                                        href="{{ url('admin/update-role/' . $subadmin->id) }}"><i
+                                                            class="fas fa-unlock"></i></a>&nbsp;&nbsp;
+                                                    <a class="confirmDelete" name="subadmin" title="Delete Subadmin"
+                                                        href="javascript:void(0)" record='subadmin'
+                                                        recordid="{{ $subadmin->id }}"><i class="fas fa-trash"></i></a>
+
                                                 </td>
                                             </tr>
                                         @endforeach
