@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Admin;
+use App\Models\AdminsRole;
 use Validator;
 use Session;
 use Auth;
@@ -204,5 +205,48 @@ class AdminController extends Controller
             return redirect('admin/sub-admins')->with('success_message', $message);
         }
         return view('admin.subadmins.add_edit_subadmin')->with(compact('title', 'subadmin'));
+    }
+
+    public function updateRole($id, Request $request) {
+        if ($request->isMethod('post')) {
+            $data = $request->all();
+
+            // Retrieve checkbox values, defaulting to 0 if not checked
+            $cms_pages_view = $request->has('cms_pages_view') ? 1 : 0;
+            $cms_pages_edit = $request->has('cms_pages_edit') ? 1 : 0;
+            $cms_pages_full = $request->has('cms_pages_full') ? 1 : 0;
+
+            $role_count = AdminsRole::where('subadmin_id', $data['subadmin_id'])
+                                     ->where('module', 'cms_pages')
+                                     ->count();
+
+            if ($role_count > 0) {
+                // Update the existing role permissions
+                AdminsRole::where('subadmin_id', $data['subadmin_id'])
+                          ->where('module', 'cms_pages')
+                          ->update([
+                              'view_access' => $cms_pages_view,
+                              'edit_access' => $cms_pages_edit,
+                              'full_access' => $cms_pages_full
+                          ]);
+            } else {
+                // Create a new role entry if one doesn't exist
+                $role = new AdminsRole;
+                $role->subadmin_id = $data['subadmin_id'];
+                $role->module = 'cms_pages';
+                $role->view_access = $cms_pages_view;
+                $role->edit_access = $cms_pages_edit;
+                $role->full_access = $cms_pages_full;
+                $role->save();
+            }
+
+            $message = 'Role updated successfully!!';
+            return redirect()->back()->with('success_message', $message);
+        }
+
+        $subadmin_roles = AdminsRole::where('subadmin_id', $id)->get()->toArray();
+        $subadmin_details = Admin::where('id', $id)->first()->toArray();
+        $title = 'Update ' . $subadmin_details['name'] . " Subadmin Roles/Permissions";
+        return view('admin.subadmins.update_role')->with(compact('title', 'id', 'subadmin_roles'));
     }
 }
