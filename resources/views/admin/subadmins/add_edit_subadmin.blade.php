@@ -7,7 +7,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Pages Management</h1>
+                        <h1 class="m-0">Admin Management</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -58,31 +58,45 @@
                                 </div>
                             @endif
                             <!-- form start -->
-                            <form name="cmsForm" id="cmsForm"
-                                @if (empty($cmsPage['id'])) action="{{ url('admin/add-edit-cms-page') }}" @else action="{{ url('admin/add-edit-cms-page/' . $cmsPage['id']) }}" @endif
+                            <form name="subadminForm" id="subadminForm"
+                                @if (empty($subadmin['id'])) action="{{ url('admin/add-edit-sub-admin') }}" @else action="{{ url('admin/add-edit-sub-admin/' . $subadmin['id']) }}" @endif
                                 method="post" enctype="multipart/form-data">@csrf
                                 <div class="card-body">
-                                    <div class="form-group">
-                                        <label for="title">Title*</label>
-                                        <input type="text" class="form-control" name="title" id="title"
-                                            placeholder="Enter Title..."
-                                            @if (!empty($cmsPage['title'])) value="{{ $cmsPage['title'] }}" @else value="{{ old('title') }}" @endif>
+                                    <div class="form-group col-md-6">
+                                        <label for="subadmin_name">Subadmin Name*</label>
+                                        <input type="text" class="form-control" name="subadmin_name" id="subadmin_name"
+                                            placeholder="Enter Subadmin Name..."
+                                            @if (!empty($subadmin['name'])) value="{{ $subadmin['name'] }}" @else value="{{ old('name') }}" @endif>
                                     </div>
-                                    <div class="form-group">
-                                        <label for='url'>URL*</label>
-                                        <input type="text" class="form-control" name="url" id="url"
-                                            placeholder="Enter URL..."
-                                            @if (!empty($cmsPage['url'])) value="{{ $cmsPage['url'] }}" @else value="{{ old('url') }}" @endif>
+                                    <div class="form-group col-md-6">
+                                        <label for='subadmin_mobile'>Subadmin Mobile*</label>
+                                        <input type="text" class="form-control" name="subadmin_mobile"
+                                            id="subadmin_mobile" placeholder="Enter Subadmin Mobile..."
+                                            @if (!empty($subadmin['mobile'])) value="{{ $subadmin['mobile'] }}" @else value="{{ old('mobile') }}" @endif>
                                     </div>
-                                    <div class="form-group">
-                                        <label for="description">Description*</label>
-                                        <textarea name="description" id="description" class="form-control" rows="3" placeholder="Enter Description...">
-                                            @if (!empty($cmsPage['description']))
-{{ $cmsPage['description'] }}
-@else
-{{ old('description') }}
-@endif
-                                        </textarea>
+                                    <div class="form-group col-md-6">
+                                        <label for="subadmin_email">Subadmin Email*</label>
+                                        <input type="email" class="form-control" name="subadmin_email" id="subadmin_email"
+                                            placeholder="Enter Subadmin Email..."
+                                            @if (!empty($subadmin['email'])) value="{{ $subadmin['email'] }}" @else value="{{ old('email') }}" @endif>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="subaddmin_password">Subadmin Password</label>
+                                        <input type="password" class="form-control" name="subadmin_password"
+                                            id="subadmin_password" placeholder="Enter Subadmin Password..."
+                                            @if ($subadmin['id'] == '') required @endif>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="subadmin_image">Subadmin Image</label>
+                                        <input type="file" class="form-control" name="subadmin_image"
+                                            id="subadmin_image">
+                                        @if (!empty($subadmin['image']))
+                                            <a target="_blank"
+                                                href="{{ url('admin/img/photos/' . $subadmin['image']) }}">View
+                                                Image</a>
+                                            <input type="hidden" name="current_subadmin_image"
+                                                value="{{ Auth::guard('admin')->user()->image }}">
+                                        @endif
                                     </div>
                                 </div>
 
@@ -99,6 +113,8 @@
             </div><!-- /.container-fluid -->
         </section>
         <!-- /.content -->
+
+
     </div>
     <!-- /.content-wrapper -->
 @endsection

@@ -29,7 +29,7 @@
                             <div class="card-header">
                                 <h3 class="card-title">Subadmins</h3>
                                 <a style="max-width: 150px; float: right; display:inline-block"
-                                    href="{{ url('admin/add-sub-admin') }}" class="btn btn-block btn-primary">Add Sub
+                                    href="{{ url('admin/add-edit-sub-admin') }}" class="btn btn-block btn-primary">Add Sub
                                     Admin</a>
                             </div>
                             @if (Session::has('success_message'))
@@ -60,6 +60,9 @@
                                                 <td>{{ $subadmin->email }}</td>
                                                 <td>{{ $subadmin->type }}</td>
                                                 <td>
+                                                    <a title="Edit Subadmin"
+                                                        href="{{ url('admin/add-edit-sub-admin/' . $subadmin->id) }}"><i
+                                                            class="fas fa-edit"></i></a>&nbsp;&nbsp;
                                                     <a class="confirmDelete" name="subadmin" title="Delete Subadmin"
                                                         href="javascript:void(0)" record='subadmin'
                                                         recordid="{{ $subadmin->id }}"><i
