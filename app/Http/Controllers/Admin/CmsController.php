@@ -4,9 +4,11 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\CmsPage;
+use App\Models\AdminsRole;
 use Illuminate\Http\Request;
 use Validator;
 use Session;
+use Auth;
 
 class CmsController extends Controller
 {
@@ -18,7 +20,30 @@ class CmsController extends Controller
         Session::put('page','cms-pages');
         $cms_pages = CmsPage::get();
 
-        return view('admin.pages.cms_pages')->with(compact('cms_pages'));
+        $admin_id = Auth::guard('admin')->user()->id;
+        $module_count = AdminsRole::where(['subadmin_id' => $admin_id, 'module' => 'cms_pages'])->count();
+
+        if (Auth::guard('admin')->user()->type == 'admin') {
+            $pages_module['view_access'] = 1;
+            $pages_module['edit_access'] = 1;
+            $pages_module['full_access'] = 1;
+        } else {
+            if ($module_count == 0) {
+                $message = 'This feature is restricted to this Sub Admins';
+                return redirect('admin/dashboard')->with('error_message', $message);
+            }
+
+            $pages_module = AdminsRole::where(['subadmin_id' => $admin_id, 'module' => 'cms_pages'])->first();
+
+            if ($pages_module->view_access == 0 && $pages_module->edit_access == 0 && $pages_module->full_access == 0) {
+                $message = 'This feature is restricted to this Sub Admins';
+                return redirect('admin/dashboard')->with('error_message', $message);
+            }
+
+            $pages_module = $pages_module->toArray();
+        }
+
+        return view('admin.pages.cms_pages')->with(compact('cms_pages', 'pages_module'));
     }
 
     /**

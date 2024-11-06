@@ -28,12 +28,15 @@
                         <div class="card">
                             <div class="card-header">
                                 <h3 class="card-title">CMS Pages</h3>
-                                <a style="max-width: 150px; float: right; display:inline-block"
-                                    href="{{ url('admin/add-edit-cms-page') }}" class="btn btn-block btn-primary">Edit CMS
-                                    Page</a>
+                                @if ($pages_module['edit_access'] == 1 || $pages_module['full_access'] == 1)
+                                    <a style="max-width: 150px; float: right; display:inline-block"
+                                        href="{{ url('admin/add-edit-cms-page') }}" class="btn btn-block btn-primary">Add
+                                        CMS
+                                        Page</a>
+                                @endif
                             </div>
                             @if (Session::has('success_message'))
-                                <div class="alert alert-success alert-dismissible fade show mt-5" role="alert">
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
                                     <strong>Success!</strong>{{ Session::get('success_message') }}
                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
@@ -58,23 +61,29 @@
                                                 <td>{{ $page->url }}</td>
                                                 <td>{{ $page->created_at }}</td>
                                                 <td>
-                                                    <a title="Edit CMS Page"
-                                                        href="{{ url('admin/add-edit-cms-page/' . $page->id) }}"><i
-                                                            class="fas fa-edit"></i></a>&nbsp;&nbsp;
-                                                    <a class="confirmDelete" name="CMS Page" title="Delete CMS Page"
-                                                        href="javascript:void(0)" record="cms-page"
-                                                        recordid="{{ $page->id }}"><i
-                                                            class="fas fa-trash"></i></a>&nbsp;&nbsp;
-                                                    @if ($page->status == 1)
-                                                        <a class="updateCmsPageStatus" id="page-{{ $page->id }}"
-                                                            page_id="{{ $page->id }}" href="javascript:void(0)"><i
-                                                                class="fas fa-toggle-on" aria-hidden="true"
-                                                                status="Active"></i></a>
-                                                    @else
-                                                        <a class="updateCmsPageStatus" id="page-{{ $page->id }}"
-                                                            page_id="{{ $page->id }}" href="javascript:void(0)"><i
-                                                                style="color:grey" class="fas fa-toggle-off"
-                                                                aria-hidden="true" status="Inactive"></i></a>
+                                                    @if ($pages_module['edit_access'] == 1 || $pages_module['full_access'] == 1)
+                                                        <a title="Edit CMS Page"
+                                                            href="{{ url('admin/add-edit-cms-page/' . $page->id) }}"><i
+                                                                class="fas fa-edit"></i></a>&nbsp;&nbsp;
+                                                    @endif
+                                                    @if ($pages_module['full_access'] == 1)
+                                                        <a class="confirmDelete" name="CMS Page" title="Delete CMS Page"
+                                                            href="javascript:void(0)" record="cms-page"
+                                                            recordid="{{ $page->id }}"><i
+                                                                class="fas fa-trash"></i></a>&nbsp;&nbsp;
+                                                    @endif
+                                                    @if ($pages_module['edit_access'] == 1 || $pages_module['full_access'] == 1)
+                                                        @if ($page->status == 1)
+                                                            <a class="updateCmsPageStatus" id="page-{{ $page->id }}"
+                                                                page_id="{{ $page->id }}" href="javascript:void(0)"><i
+                                                                    class="fas fa-toggle-on" aria-hidden="true"
+                                                                    status="Active"></i></a>
+                                                        @else
+                                                            <a class="updateCmsPageStatus" id="page-{{ $page->id }}"
+                                                                page_id="{{ $page->id }}" href="javascript:void(0)"><i
+                                                                    style="color:grey" class="fas fa-toggle-off"
+                                                                    aria-hidden="true" status="Inactive"></i></a>
+                                                        @endif
                                                     @endif
                                                 </td>
                                             </tr>
