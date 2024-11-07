@@ -50,15 +50,25 @@
                                             <th>Product Name</th>
                                             <th>Product Code</th>
                                             <th>Product Color</th>
+                                            <th>Category</th>
+                                            <th>Parent Category</th>
                                             <th>Status</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach ($products as $product)
                                             <tr>
-                                                <td>{{ $product->product_name }}</td>
-                                                <td>{{ $product->product_code }}</td>
-                                                <td>{{ $product->product_color }}</td>
+                                                <td>{{ $product['product_name'] }}</td>
+                                                <td>{{ $product['product_code'] }}</td>
+                                                <td>{{ $product['product_color'] }}</td>
+                                                <td>{{ $product['category']['category_name'] }}</td>
+                                                <td>
+                                                    @if (isset($product['category']['parent_category']['category_name']))
+                                                        {{ $product['category']['parent_category']['category_name'] }}
+                                                    @else
+                                                        ROOT
+                                                    @endif
+                                                </td>
                                                 <td>
                                                     @if ($product['status'] == 1)
                                                         <a class="updateProductStatus" id="product-{{ $product['id'] }}"

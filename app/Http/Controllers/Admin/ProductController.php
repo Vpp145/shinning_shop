@@ -11,7 +11,7 @@ class ProductController extends Controller
 {
     public function products() {
         Session::put('page', 'products');
-        $products = Product::get();
+        $products = Product::with('category')->get()->toArray();
 
         return view('admin.products.products')->with(compact('products'));
     }
