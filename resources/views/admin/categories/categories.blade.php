@@ -30,13 +30,13 @@
                                 <h3 class="card-title">Categories</h3>
                                 @if ($categories_module['edit_access'] == 1 || $categories_module['full_access'] == 1)
                                     <a style="max-width: 150px; float: right; display:inline-block"
-                                        href="{{ url('admin/add-edit-cms-page') }}" class="btn btn-block btn-primary">Add
+                                        href="{{ url('admin/add-edit-category') }}" class="btn btn-block btn-primary">Add
                                         Category</a>
                                 @endif
                             </div>
                             @if (Session::has('success_message'))
                                 <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                    <strong>Success!</strong>{{ Session::get('success_message') }}
+                                    <strong>Success!</strong> {{ Session::get('success_message') }}
                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                         <span aria-hidden="true">&times;</span>
                                     </button>
@@ -47,7 +47,6 @@
                                 <table id="categories" class="table table-bordered table-striped">
                                     <thead>
                                         <tr>
-                                            <th>ID</th>
                                             <th>Name</th>
                                             <th>Parent Category</th>
                                             <th>URL</th>
@@ -58,7 +57,6 @@
                                     <tbody>
                                         @foreach ($categories as $category)
                                             <tr>
-                                                <td>{{ $category['id'] }}</td>
                                                 <td>{{ $category['category_name'] }}</td>
                                                 <td>
                                                     @if (isset($category['parentCategory']['category_name']))
