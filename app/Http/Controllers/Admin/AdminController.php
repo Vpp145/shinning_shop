@@ -207,46 +207,54 @@ class AdminController extends Controller
         return view('admin.subadmins.add_edit_subadmin')->with(compact('title', 'subadmin'));
     }
 
-    public function updateRole($id, Request $request) {
+    public function updateRole(Request $request, $id) {
         if ($request->isMethod('post')) {
             $data = $request->all();
 
-            // Retrieve checkbox values, defaulting to 0 if not checked
-            $cms_pages_view = $request->has('cms_pages_view') ? 1 : 0;
-            $cms_pages_edit = $request->has('cms_pages_edit') ? 1 : 0;
-            $cms_pages_full = $request->has('cms_pages_full') ? 1 : 0;
+            // Define modules and associated permissions to handle
+            $modules = ['cms_pages', 'categories'];  // Add more modules here as needed
 
-            $role_count = AdminsRole::where('subadmin_id', $data['subadmin_id'])
-                                     ->where('module', 'cms_pages')
-                                     ->count();
+            foreach ($modules as $module) {
+                // Retrieve checkbox values for each permission, defaulting to 0 if not checked
+                $view_access = $request->has("{$module}_view") ? 1 : 0;
+                $edit_access = $request->has("{$module}_edit") ? 1 : 0;
+                $full_access = $request->has("{$module}_full") ? 1 : 0;
 
-            if ($role_count > 0) {
-                // Update the existing role permissions
-                AdminsRole::where('subadmin_id', $data['subadmin_id'])
-                          ->where('module', 'cms_pages')
-                          ->update([
-                              'view_access' => $cms_pages_view,
-                              'edit_access' => $cms_pages_edit,
-                              'full_access' => $cms_pages_full
-                          ]);
-            } else {
-                // Create a new role entry if one doesn't exist
-                $role = new AdminsRole;
-                $role->subadmin_id = $data['subadmin_id'];
-                $role->module = 'cms_pages';
-                $role->view_access = $cms_pages_view;
-                $role->edit_access = $cms_pages_edit;
-                $role->full_access = $cms_pages_full;
-                $role->save();
+                // Check if the role for the module already exists for the subadmin
+                $role_count = AdminsRole::where('subadmin_id', $data['subadmin_id'])
+                                         ->where('module', $module)
+                                         ->count();
+
+                if ($role_count > 0) {
+                    // Update the existing role permissions
+                    AdminsRole::where('subadmin_id', $data['subadmin_id'])
+                              ->where('module', $module)
+                              ->update([
+                                  'view_access' => $view_access,
+                                  'edit_access' => $edit_access,
+                                  'full_access' => $full_access
+                              ]);
+                } else {
+                    // Create a new role entry if one doesn't exist
+                    AdminsRole::create([
+                        'subadmin_id' => $data['subadmin_id'],
+                        'module' => $module,
+                        'view_access' => $view_access,
+                        'edit_access' => $edit_access,
+                        'full_access' => $full_access,
+                    ]);
+                }
             }
 
-            $message = 'Role updated successfully!!';
+            $message = 'Roles updated successfully!';
             return redirect()->back()->with('success_message', $message);
         }
 
+        // Retrieve subadmin roles and details for the view
         $subadmin_roles = AdminsRole::where('subadmin_id', $id)->get()->toArray();
-        $subadmin_details = Admin::where('id', $id)->first()->toArray();
-        $title = 'Update ' . $subadmin_details['name'] . " Subadmin Roles/Permissions";
-        return view('admin.subadmins.update_role')->with(compact('title', 'id', 'subadmin_roles'));
+        $subadmin_details = Admin::findOrFail($id);
+        $title = 'Update ' . $subadmin_details->name . " Subadmin Roles/Permissions";
+
+        return view('admin.subadmins.update_role', compact('title', 'id', 'subadmin_roles'));
     }
 }
