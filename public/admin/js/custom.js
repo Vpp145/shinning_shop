@@ -14,11 +14,11 @@ $(document).ready(function () {
             success: function (resp) {
                 if (resp == false) {
                     $("#verifyCurrentPwd").html(
-                        "<font color='red'>Current password is incorrect</font>"
+                        "<font color='red'>Current password is incorrect</font>",
                     );
                 } else if (resp == true) {
                     $("#verifyCurrentPwd").html(
-                        "<font color='green'>Current password is correct</font>"
+                        "<font color='green'>Current password is correct</font>",
                     );
                 }
             },
@@ -42,11 +42,11 @@ $(document).ready(function () {
             success: function (resp) {
                 if (resp["status"] == 0) {
                     $("#page-" + page_id).html(
-                        "<i class='fas fa-toggle-off' style='color:grey' aria-hidden='true' status='Inactive'></i>"
+                        "<i class='fas fa-toggle-off' style='color:grey' aria-hidden='true' status='Inactive'></i>",
                     );
                 } else if (resp["status"] == 1) {
                     $("#page-" + page_id).html(
-                        "<i class='fas fa-toggle-on' aria-hidden='true' status='Active'></i>"
+                        "<i class='fas fa-toggle-on' aria-hidden='true' status='Active'></i>",
                     );
                 }
             },
@@ -100,11 +100,11 @@ $(document).ready(function () {
             success: function (resp) {
                 if (resp["status"] == 0) {
                     $("#subadmin-" + subadmin_id).html(
-                        "<i class='fas fa-toggle-off' style='color:grey' aria-hidden='true' status='Inactive'></i>"
+                        "<i class='fas fa-toggle-off' style='color:grey' aria-hidden='true' status='Inactive'></i>",
                     );
                 } else if (resp["status"] == 1) {
                     $("#subadmin-" + subadmin_id).html(
-                        "<i class='fas fa-toggle-on' aria-hidden='true' status='Active'></i>"
+                        "<i class='fas fa-toggle-on' aria-hidden='true' status='Active'></i>",
                     );
                 }
             },
@@ -129,11 +129,39 @@ $(document).ready(function () {
             success: function (resp) {
                 if (resp["status"] == 0) {
                     $("#category-" + category_id).html(
-                        "<i class='fas fa-toggle-off' style='color:grey' status='Inactive'></i>"
+                        "<i class='fas fa-toggle-off' style='color:grey' status='Inactive'></i>",
                     );
                 } else if (resp["status"] == 1) {
                     $("#category-" + category_id).html(
-                        "<i class='fas fa-toggle-on' style='color:#3f6ed3' status='Active'></i>"
+                        "<i class='fas fa-toggle-on' style='color:#3f6ed3' status='Active'></i>",
+                    );
+                }
+            },
+            error: function (err) {
+                console.log("error", err);
+            },
+        });
+    });
+
+    //update product status
+    $(document).on("click", ".updateProductStatus", function () {
+        var status = $(this).children("i").attr("status");
+        var product_id = $(this).attr("product_id");
+        $.ajax({
+            headers: {
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+            },
+            type: "post",
+            url: "/admin/update-product-status",
+            data: { status: status, product_id: product_id },
+            success: function (resp) {
+                if (resp["status"] == 0) {
+                    $("#product-" + product_id).html(
+                        "<i class='fas fa-toggle-off' style='color:grey' status='Inactive'></i>",
+                    );
+                } else if (resp["status"] == 1) {
+                    $("#product-" + product_id).html(
+                        "<i class='fas fa-toggle-on' style='color:#3f6ed3' status='Active'></i>",
                     );
                 }
             },
