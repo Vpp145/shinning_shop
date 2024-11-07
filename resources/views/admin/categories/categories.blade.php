@@ -80,6 +80,10 @@
                                                                 status="Inactive"></i></a>
                                                     @endif
                                                     &nbsp;&nbsp;
+                                                    <a style="color:#3f6ed3"
+                                                        href="{{ url('admin/add-edit-category/' . $category['id']) }}"><i
+                                                            class="fas fa-edit"></i></a>
+                                                    &nbsp;&nbsp;
                                                     <a style="color:#3f6ed3" class="confirmDelete" title="Delete Category"
                                                         href="javascript:void(0)" record="category"
                                                         recordid="{{ $category['id'] }}"><i class="fas fa-trash"></i></a>
