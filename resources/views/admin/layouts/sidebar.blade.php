@@ -99,65 +99,33 @@
                 @else
                     @php $active = '' @endphp
                 @endif
-                <li class="nav-item menu-open">
-                    <a href="#" class="nav-link {{ $active }}">
-                        <i class="nav-icon fas fa-file"></i>
-                        <p>
-                            Pages
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
+                <li class="nav-item">
+                    <a href="{{ url('admin/cms-pages') }}" class="nav-link {{ $active }}">
+                        <i class="nav-icon fas fa-copy"></i>
+                        <p>CMS Pages</p>
                     </a>
-                    <ul class="nav nav-treeview">
-                        @if (Session::get('page') == 'cms-pages')
-                            @php $active = 'active' @endphp
-                        @else
-                            @php $active = '' @endphp
-                        @endif
-                        <li class="nav-item">
-                            <a href="{{ url('admin/cms-pages') }}" class="nav-link {{ $active }}">
-                                <i class="nav-icon fas fa-copy"></i>
-                                <p>CMS Pages</p>
-                            </a>
-                        </li>
-                    </ul>
                 </li>
-                @if (Session::get('page') == 'categories' || Session::get('page') == 'products')
+                @if (Session::get('page') == 'categories')
                     @php $active = 'active' @endphp
                 @else
                     @php $active = '' @endphp
                 @endif
-                <li class="nav-item menu-open">
-                    <a href="#" class="nav-link {{ $active }}">
-                        <i class="nav-icon fas fa-list"></i>
-                        <p>
-                            Catalogue
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
+                <li class="nav-item">
+                    <a href="{{ url('admin/categories') }}" class="nav-link {{ $active }}">
+                        <i class="fas fa-list nav-icon"></i>
+                        <p>Categories</p>
                     </a>
-                    <ul class="nav nav-treeview">
-                        @if (Session::get('page') == 'categories')
-                            @php $active = 'active' @endphp
-                        @else
-                            @php $active = '' @endphp
-                        @endif
-                        <li class="nav-item">
-                            <a href="{{ url('admin/categories') }}" class="nav-link {{ $active }}">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Categories</p>
-                            </a>
-                        </li>
-                        @if (Session::get('page') == 'products')
-                            @php $active = 'active' @endphp
-                        @else
-                            @php $active = '' @endphp
-                        @endif
-                        <li class="nav-item">
-                            <a href="{{ url('admin/products') }}" class="nav-link {{ $active }}">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Products</p>
-                            </a>
-                        </li>
-                    </ul>
+                </li>
+                @if (Session::get('page') == 'products')
+                    @php $active = 'active' @endphp
+                @else
+                    @php $active = '' @endphp
+                @endif
+                <li class="nav-item">
+                    <a href="{{ url('admin/products') }}" class="nav-link {{ $active }}">
+                        <i class="fas fa-box nav-icon"></i>
+                        <p>Products</p>
+                    </a>
                 </li>
             </ul>
         </nav>
