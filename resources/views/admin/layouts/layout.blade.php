@@ -66,6 +66,7 @@
         $(function() {
             $('#cmspages').DataTable();
             $('#subadmins').DataTable();
+            $('#categories').DataTable();
         });
     </script>
     <!-- SweetAlert -->
