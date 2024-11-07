@@ -77,6 +77,19 @@ class CategoryController extends Controller
         if ($request->isMethod('post')) {
             $data = $request->all();
             // echo "<pre>"; print_r($data); die;
+
+            $rules = [
+                'category_name' => 'required|regex:/^[\pL\s\-]+$/u',
+                'url' => 'required|unique:categories',
+            ];
+            $customMessages = [
+                'category_name.required' => 'Category name is required',
+                'category_name.regex' => 'Valid category name is required',
+                'url.required' => 'URL is required',
+                'url.unique' => 'URL already exists',
+            ];
+            $request->validate($rules, $customMessages);
+
             if($data['category_discount'] == '') {
                 $data['category_discount'] = 0;
             }
@@ -95,7 +108,7 @@ class CategoryController extends Controller
                 $category->category_image = '';
             }
 
-            // $category->parent_id = $data['parent_id'];
+            $category->parent_id = $data['parent_id'];
             $category->category_name = $data['category_name'];
             $category->category_discount = $data['category_discount'];
             $category->description = $data['description'] ?? '';
@@ -108,6 +121,8 @@ class CategoryController extends Controller
             return redirect('admin/categories')->with('success_message', $message);
         }
 
-        return view('admin.categories.add_edit_category', compact('title', 'category'));
+        $get_categories = Category::getCategories();
+        // dd($get_categories);
+        return view('admin.categories.add_edit_category', compact('title', 'category', 'get_categories'));
     }
 }
