@@ -59,8 +59,8 @@
                                             <tr>
                                                 <td>{{ $category['category_name'] }}</td>
                                                 <td>
-                                                    @if (isset($category['parentCategory']['category_name']))
-                                                        {{ $category['parentCategory']['category_name'] }}
+                                                    @if (isset($category['parent_category']['category_name']))
+                                                        {{ $category['parent_category']['category_name'] }}
                                                     @else
                                                         -
                                                     @endif
