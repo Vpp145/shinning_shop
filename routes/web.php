@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\CmsController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ProductController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -37,5 +38,10 @@ Route::prefix('/admin')->namespace('App\Http\Controllers\Admin')->group(function
         Route::get('delete-category/{id}', [CategoryController::class, 'deleteCategory']);
         Route::match(['get', 'post'], 'add-edit-category/{id?}', [CategoryController::class, 'addEditCategory']);
         Route::get('delete-category-image/{id}', [CategoryController::class, 'deleteCategoryImage']);
+
+        //products
+        Route::get('products', [ProductController::class, 'products']);
+        Route::post('update-product-status', [ProductController::class, 'updateProductStatus']);
+        Route::get('delete-product/{id}', [ProductController::class, 'deleteProduct']);
     });
 });
