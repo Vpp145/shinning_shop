@@ -71,17 +71,24 @@ class CategoryController extends Controller
         } else {
             $title = "Edit Category";
             $category = Category::find($id);
-            // $message = 'Category updated successfully';
+            $message = 'Category updated successfully';
         }
 
         if ($request->isMethod('post')) {
             $data = $request->all();
             // echo "<pre>"; print_r($data); die;
 
-            $rules = [
-                'category_name' => 'required|regex:/^[\pL\s\-]+$/u',
-                'url' => 'required|unique:categories',
-            ];
+            if($id == '') {
+                $rules = [
+                    'category_name' => 'required|regex:/^[\pL\s\-]+$/u',
+                    'url' => 'required|unique:categories',
+                ];
+            } else {
+                $rules = [
+                    'category_name' => 'required|regex:/^[\pL\s\-]+$/u',
+                    'url' => 'required',
+                ];
+            }
             $customMessages = [
                 'category_name.required' => 'Category name is required',
                 'category_name.regex' => 'Valid category name is required',
@@ -99,7 +106,7 @@ class CategoryController extends Controller
                 if($image_tmp->isValid()) {
                     $extension = $image_tmp->getClientOriginalExtension();
                     $image_name = rand(111, 99999).'.'.$extension;
-                    $image_path = 'front/images/category_images/'.$image_name;
+                    $image_path = public_path('front/images/categories/'.$image_name);
                     Image::make($image_tmp)->save($image_path);
 
                     $category->category_image = $image_name;
@@ -124,5 +131,16 @@ class CategoryController extends Controller
         $get_categories = Category::getCategories();
         // dd($get_categories);
         return view('admin.categories.add_edit_category', compact('title', 'category', 'get_categories'));
+    }
+
+    public function deleteCategoryImage($id) {
+        $category_image = Category::select('category_image')->where('id', $id)->first();
+        $category_image_path = 'front/images/categories/';
+        if (file_exists($category_image_path.$category_image->category_image)) {
+            unlink($category_image_path.$category_image->category_image);
+        }
+
+        Category::where('id', $id)->update(['category_image' => '']);
+        return redirect()->back()->with('success_message', 'Category image deleted successfully');
     }
 }

@@ -66,48 +66,83 @@
                                         <label for="category_name">Category Name*</label>
                                         <input type="text" class="form-control" name="category_name" id="category_name"
                                             placeholder="Enter Category Name..."
-                                            @if (!empty($category['category_name'])) value="{{ $category['category_name'] }}" @endif>
+                                            @if (!empty($category['category_name'])) value="{{ $category['category_name'] }}" @else value="{{ old('category_name') }}" @endif>
                                     </div>
                                     <div class="form-group">
                                         <label for="parent_id">Category Level*</label>
                                         <select name="parent_id" id="parent_id" class="form-control">
                                             <option value="">Select Category Level</option>
-                                            <option value="0">main category</option>
-                                            <?php foreach ($get_categories as $key => $category) { ?>
-                                            <option value="{{ $category['id'] }}">&#9679;&nbsp;
-                                                {{ $category['category_name'] }}</option>
-                                            <?php if (!empty($category['sub_categories'])){
-                                                    foreach($category['sub_categories'] as $key => $sub_cat) {
-                                                ?>
-                                            <option value="{{ $sub_cat['id'] }}">&nbsp;&nbsp;&nbsp;&nbsp;&raquo;&nbsp;
-                                                {{ $sub_cat['category_name'] }}</option>
-                                            <?php foreach ($sub_cat['sub_categories'] as $key => $sub_sub_cat) { ?>
-                                            <option value="{{ $sub_cat['id'] }}">
-                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&raquo;&raquo;&nbsp;
-                                                {{ $sub_sub_cat['category_name'] }}</option>
-                                            <?php
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                            ?>
+                                            <option value="0" @if (empty($category['parent_id'])) selected @endif>Main
+                                                Category</option>
+
+                                            @foreach ($get_categories as $main_category)
+                                                @php
+                                                    $selectedMain =
+                                                        isset($category['parent_id']) &&
+                                                        $category['parent_id'] == $main_category['id']
+                                                            ? 'selected'
+                                                            : '';
+                                                @endphp
+                                                <option value="{{ $main_category['id'] }}" {{ $selectedMain }}>
+                                                    {{ $main_category['category_name'] }}</option>
+
+                                                @if (!empty($main_category['sub_categories']))
+                                                    @foreach ($main_category['sub_categories'] as $sub_category)
+                                                        @php
+                                                            $selectedSub =
+                                                                isset($category['parent_id']) &&
+                                                                $category['parent_id'] == $sub_category['id']
+                                                                    ? 'selected'
+                                                                    : '';
+                                                        @endphp
+                                                        <option value="{{ $sub_category['id'] }}" {{ $selectedSub }}>
+                                                            &raquo;&nbsp;{{ $sub_category['category_name'] }}</option>
+
+                                                        @if (!empty($sub_category['sub_categories']))
+                                                            @foreach ($sub_category['sub_categories'] as $sub_sub_category)
+                                                                @php
+                                                                    $selectedSubSub =
+                                                                        isset($category['parent_id']) &&
+                                                                        $category['parent_id'] ==
+                                                                            $sub_sub_category['id']
+                                                                            ? 'selected'
+                                                                            : '';
+                                                                @endphp
+                                                                <option value="{{ $sub_sub_category['id'] }}"
+                                                                    {{ $selectedSubSub }}>
+                                                                    &nbsp;&raquo;&nbsp;&nbsp;&nbsp;{{ $sub_sub_category['category_name'] }}
+                                                                </option>
+                                                            @endforeach
+                                                        @endif
+                                                    @endforeach
+                                                @endif
+                                            @endforeach
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <label for="category_image">Category Image</label>
                                         <input type="file" class="form-control" name="category_image"
                                             id="category_image">
+                                        @if (!empty($category['category_image']))
+                                            <div>
+                                                <img style="width:80px; margin-top:5px"
+                                                    src="{{ asset('front/images/categories/' . $category['category_image']) }}">&nbsp;
+                                                <a class="confirmDelete" href="javascript:void(0)" record="category_image"
+                                                    recordid="{{ $category['id'] }}"><i class="fas fa-trash"></i></a>
+                                            </div>
+                                        @endif
                                     </div>
                                     <div class="form-group">
                                         <label for="category_discount">Category Discount</label>
                                         <input type="text" class="form-control" name="category_discount"
                                             id="category_discount" placeholder="Enter Category Discount..."
-                                            @if (!empty($category['category_discount'])) value="{{ $category['category_discount'] }}" @endif>
+                                            @if (!empty($category['category_discount'])) value="{{ $category['category_discount'] }}" @else value="{{ old('category_discount') }}" @endif>
                                     </div>
                                     <div class="form-group">
                                         <label for="url">Category URL*</label>
                                         <input type="text" class="form-control" name="url" id="url"
-                                            placeholder="Enter Category URL...">
+                                            placeholder="Enter Category URL..."
+                                            @if (!empty($category['url'])) value="{{ $category['url'] }}" @else value="{{ old('url') }}" @endif>
                                     </div>
                                     <div class="form-group">
                                         <label for="description">Category Description</label>
@@ -115,6 +150,8 @@
                                             placeholder="Enter Category Description...">
                                             @if (!empty($category['description']))
 {{ $category['description'] }}
+@else
+{{ old('description') }}
 @endif
                                         </textarea>
                                     </div>
