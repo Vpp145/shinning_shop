@@ -30,7 +30,7 @@
                                 <h3 class="card-title">Products</h3>
                                 {{-- @if ($products_module['edit_access'] == 1 || $products_module['full_access'] == 1) --}}
                                 <a style="max-width: 150px; float: right; display:inline-block"
-                                    href="{{ url('admin/add-edit-category') }}" class="btn btn-block btn-primary">Add
+                                    href="{{ url('admin/add-edit-product') }}" class="btn btn-block btn-primary">Add
                                     Products</a>
                                 {{-- @endif --}}
                             </div>
