@@ -167,11 +167,12 @@
                                             id="meta_description" placeholder="Enter Meta Description..."
                                             @if (!empty($category['meta_description'])) value="{{ $category['meta_description'] }}" @endif>
                                     </div>
-                                    <div class="form-group"></div>
-                                    <label for="meta_keywords">Meta Keywords</label>
-                                    <input type="text" class="form-control" name="meta_keywords" id="meta_keywords"
-                                        placeholder="Enter Meta Keywords..."
-                                        @if (!empty($category['meta_keywords'])) value="{{ $category['meta_keywords'] }}" @endif>
+                                    <div class="form-group">
+                                        <label for="meta_keywords">Meta Keywords</label>
+                                        <input type="text" class="form-control" name="meta_keywords"
+                                            id="meta_keywords" placeholder="Enter Meta Keywords..."
+                                            @if (!empty($category['meta_keywords'])) value="{{ $category['meta_keywords'] }}" @endif>
+                                    </div>
                                 </div>
 
                                 <div class="card-footer">
