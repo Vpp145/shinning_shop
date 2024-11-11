@@ -153,7 +153,34 @@
                                             @else value="{{ old('product_weight') }}" @endif>
                                     </div>
                                     <div class="form-group">
-                                        <label for="product_video">Product Video</label>
+                                        <label for="product_images">Product Images (Recommended Size: 1040 x 1200)</label>
+                                        <input type="file" class="form-control" name="products_images[]"
+                                            id="products_images" multiple accept="images/*">
+                                        <table cellspacing="10" cellpadding="10" style="padding: 5px;">
+                                            <tr>
+                                                @foreach ($product['images'] as $image)
+                                                    <td>
+                                                        <a target="_blank"
+                                                            href="{{ url('front/images/products/small/' . $image['image']) }}">
+                                                            <img style="width: 60px"
+                                                                src="{{ asset('front/images/products/small/' . $image['image']) }}">
+                                                        </a>&nbsp;
+                                                        <input type="hidden" name="image[]"
+                                                            value="{{ $image['image'] }}">
+                                                        <input style="width: 40px" type="text" placeholder="Sort"
+                                                            name="image_sort[]" value="{{ $image['image_sort'] }}">
+                                                        <a style="color: #3f6ed3" class="confirmDelete"
+                                                            title="Delete Product Image" href="javascript:void(0)"
+                                                            record='product-image' style="color:#3f6ed3"
+                                                            recordid="{{ $image['id'] }}"><i
+                                                                class="fas fa-trash"></i></a>
+                                                    </td>
+                                                @endforeach
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="product_video">Product Video (Recommended Size: less than 2 MB)</label>
                                         <input type="file" class="form-control" name="product_video"
                                             id="product_video">
                                         @if (!empty($product['product_video']))
