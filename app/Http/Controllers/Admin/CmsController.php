@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Models\CmsPage;
 use App\Models\AdminsRole;
 use Illuminate\Http\Request;
 use Validator;
-use Session;
-use Auth;
 
 class CmsController extends Controller
 {
@@ -134,7 +134,7 @@ class CmsController extends Controller
      */
     public function destroy($id)
     {
-        CmsPage::where(['id' => $id])->delete();
+        CmsPage::where('id', $id)->delete();
         return redirect()->back()->with('success_message', 'CMS Page has been deleted successfully');
     }
 }
