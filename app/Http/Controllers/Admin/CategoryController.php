@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\AdminsRole;
-use Validator;
-use Session;
 use Image;
-use Auth;
 
 class CategoryController extends Controller
 {
@@ -59,8 +58,8 @@ class CategoryController extends Controller
     }
 
     public function deleteCategory($id) {
-            Category::where(['id' => $id])->delete();
-            return response()->back()->with('success_message', 'category deleted successfully!!');
+            Category::where('id', $id)->delete();
+            return redirect()->back()->with('success_message', 'category deleted successfully!!');
     }
 
     public function addEditCategory(Request $request, $id = null) {

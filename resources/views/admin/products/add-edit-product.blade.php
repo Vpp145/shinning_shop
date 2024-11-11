@@ -66,14 +66,14 @@
                                         <label for="parent_id">Select Category*</label>
                                         <select name="parent_id" id="parent_id" class="form-control">
                                             <option value="">Select Category Level</option>
-                                            <option value="0" @if (empty($product['parent_id'])) selected @endif>Main
+                                            <option value="0" @if (empty($product['category_id'])) selected @endif>Main
                                                 Category</option>
 
                                             @foreach ($get_categories as $main_category)
                                                 @php
                                                     $selectedMain =
-                                                        isset($product['parent_id']) &&
-                                                        $product['parent_id'] == $main_category['id']
+                                                        isset($product['category_id']) &&
+                                                        $product['category_id'] == $main_category['id']
                                                             ? 'selected'
                                                             : '';
                                                 @endphp
@@ -84,8 +84,8 @@
                                                     @foreach ($main_category['sub_categories'] as $sub_category)
                                                         @php
                                                             $selectedSub =
-                                                                isset($category['parent_id']) &&
-                                                                $category['parent_id'] == $sub_category['id']
+                                                                isset($product['category_id']) &&
+                                                                $product['category_id'] == $sub_category['id']
                                                                     ? 'selected'
                                                                     : '';
                                                         @endphp
@@ -96,8 +96,8 @@
                                                             @foreach ($sub_category['sub_categories'] as $sub_sub_category)
                                                                 @php
                                                                     $selectedSubSub =
-                                                                        isset($category['parent_id']) &&
-                                                                        $category['parent_id'] ==
+                                                                        isset($product['category_id']) &&
+                                                                        $product['category_id'] ==
                                                                             $sub_sub_category['id']
                                                                             ? 'selected'
                                                                             : '';
