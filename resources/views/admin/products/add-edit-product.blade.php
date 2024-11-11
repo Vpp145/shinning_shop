@@ -83,7 +83,7 @@
                                                             @foreach ($sub_category['sub_categories'] as $sub_sub_category)
                                                                 <option value="{{ $sub_sub_category['id'] }}"
                                                                     @if (!empty(@old('category_id')) && $sub_sub_category['id'] == $old['category_id']) selected @elseif(!empty($product['category_id']) && $product['category_id'] == $sub_sub_category['id']) selected @endif>
-                                                                    &nbsp;&raquo;&nbsp;&nbsp;&nbsp;{{ $sub_sub_category['category_name'] }}
+                                                                    &nbsp;&nbsp;&nbsp;&raquo;&raquo;&nbsp;{{ $sub_sub_category['category_name'] }}
                                                                 </option>
                                                             @endforeach
                                                         @endif
@@ -113,12 +113,17 @@
                                             @if (!empty($product['product_color'])) value="{{ $product['product_color'] }}"
                                             @else value="{{ old('product_color') }}" @endif>
                                     </div>
+                                    <?php $family_colors = \App\Models\Color::colors(); ?>
                                     <div class="form-group">
                                         <label for="family_color">Family Color</label>
-                                        <input type="text" class="form-control" name="family_color" id="family_color"
-                                            placeholder="Enter Family Color..."
-                                            @if (!empty($product['family_color'])) value="{{ $product['family_color'] }}"
-                                            @else value="{{ old('family_color') }}" @endif>
+                                        <select name="family_color" id="family_color" class="form-control">
+                                            <option value="">Select Family Color</option>
+                                            @foreach ($family_colors as $color)
+                                                <option value="{{ $color->color_name }}"
+                                                    @if (isset($product['family_color']) && $product['family_color'] == $color->color_name) selected @endif>
+                                                    {{ $color->color_name }}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                     <div class="form-group">
                                         <label for="group_code">Group Code</label>
@@ -140,20 +145,6 @@
                                             @if (!empty($product['product_discount'])) value="{{ $product['product_discount'] }}"
                                             @else value="{{ old('product_discount') }}" @endif>
                                     </div>
-                                    {{-- <div class="form-group">
-                                        <label for="discount_type">Discount Type</label>
-                                        <input type="text" class="form-control" name="discount_type" id="discount_type"
-                                            placeholder="Enter Discount Type..."
-                                            @if (!empty($product['discount_type'])) value="{{ $product['discount_type'] }}"
-                                            @else value="{{ old('discount_type') }}" @endif>
-                                    </div> --}}
-                                    {{-- <div class="form-group">
-                                        <label for="final_price"> Final Price</label>
-                                        <input type="text" class="form-control" name="final_price" id="final_price"
-                                            placeholder="Enter Final Price..."
-                                            @if (!empty($product['final_price'])) value="{{ $product['final_price'] }}"
-                                            @else value="{{ old('final_price') }}" @endif>
-                                    </div> --}}
                                     <div class="form-group">
                                         <label for="product_weight">Product Weight</label>
                                         <input type="text" class="form-control" name="product_weight"

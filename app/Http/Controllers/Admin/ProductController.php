@@ -117,19 +117,18 @@ class ProductController extends Controller
                 }
             }
 
-            // $product->final_price = $data['final_price'];
             $product->product_weight = $data['product_weight'];
-            $product->description = $data['description'] ?? '';
-            $product->wash_care = $data['wash_care'] ?? '';
-            $product->search_keywords = $data['search_keywords'] ?? '';
+            $product->description = $data['description'];
+            $product->wash_care = $data['wash_care'];
+            $product->search_keywords = $data['search_keywords'];
             $product->fabric = $data['fabric'];
             $product->sleeve = $data['sleeve'];
             $product->pattern = $data['pattern'];
             $product->fit = $data['fit'];
             $product->occasion = $data['occasion'];
-            $product->meta_title = $data['meta_title'] ?? '';
-            $product->meta_description = $data['meta_description'] ?? '';
-            $product->meta_keywords = $data['meta_keywords'] ?? '';
+            $product->meta_title = $data['meta_title'];
+            $product->meta_description = $data['meta_description'];
+            $product->meta_keywords = $data['meta_keywords'];
             if(!empty($data['is_featured'])) {
                 $product->is_featured = $data['is_featured'];
             } else {
@@ -143,7 +142,7 @@ class ProductController extends Controller
             $product->status = 1;
             $product->save();
 
-            return redirect('admin/products')->with('success_message', 'product added successfully', $message);
+            return redirect('admin/products')->with('success_message', $message);
         }
 
         $get_categories = Category::getCategories();
