@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use App\Models\Admin;
 use App\Models\AdminsRole;
-use Validator;
-use Session;
-use Auth;
-use Hash;
 use Image;
 
 class AdminController extends Controller

@@ -6,8 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
-use Session;
-use Validator;
+use Illuminate\Support\Facades\Session;
 
 class ProductController extends Controller
 {
@@ -36,7 +35,7 @@ class ProductController extends Controller
 
     public function deleteProduct($id)
     {
-        Product::where(['id' => $id])->delete();
+        Product::where('id', $id)->delete();
         return redirect()->back()->with('success_message', 'product deleted successfully!!');
     }
 
