@@ -110,7 +110,7 @@
                                                                 @endphp
                                                                 <option value="{{ $sub_sub_category['id'] }}"
                                                                     {{ $selectedSubSub }}>
-                                                                    &nbsp;&raquo;&nbsp;&nbsp;&nbsp;{{ $sub_sub_category['category_name'] }}
+                                                                    &nbsp;&nbsp;&nbsp;&raquo;&raquo;&nbsp;{{ $sub_sub_category['category_name'] }}
                                                                 </option>
                                                             @endforeach
                                                         @endif
