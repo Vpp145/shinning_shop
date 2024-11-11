@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
 use Illuminate\Support\Facades\Session;
+use Validator;
 
 class ProductController extends Controller
 {
@@ -44,7 +45,6 @@ class ProductController extends Controller
         if ($id == '') {
             $title = "Add product";
             $product = new Product();
-            $pd = array();
             $message = 'product added successfully';
         } else {
             $title = "Edit product";
@@ -60,8 +60,8 @@ class ProductController extends Controller
                 'product_name' => 'required|regex:/^[\pL\s\-]+$/u',
                 'product_code' =>'required|regex:/^[\w-]*$/',
                 'product_price' => 'required|numeric',
-                'product_color' => 'required|regex:/^[pL\s\-]+$/u',
-                'family_color' => 'required|regex:/^[pL\s\-]+$/u',
+                'product_color' => 'required|regex:/^[\pL\s\-]+$/u',
+                'family_color' => 'required|regex:/^[\pL\s\-]+$/u',
             ];
             $customMessages = [
                 'category_id.required' => 'Category is required',
@@ -78,6 +78,25 @@ class ProductController extends Controller
             ];
             $request->validate($rules, $customMessages);
 
+            if($request->hasFile('product_video')) {
+                $video_tmp = $request->file('product_video');
+                if($video_tmp->isValid()) {
+                    $extension = $video_tmp->getClientOriginalExtension();
+                    $video_name = rand(111,99999).'.'.$extension;
+                    $video_path = public_path('front/video/products/');
+                    $video_tmp->move($video_path, $video_name);
+                    $product->product_video = $video_name;
+                }
+            }
+
+            if(!isset($data['product_discount'])) {
+                $data['product_discount'] = 0;
+            }
+
+            if(!isset($data['product_weight'])) {
+                $data['product_weight'] = 0;
+            }
+
             $product->category_id = $data['category_id'];
             $product->product_name = $data['product_name'];
             $product->product_code = $data['product_code'];
@@ -86,17 +105,28 @@ class ProductController extends Controller
             $product->group_code = $data['group_code'];
             $product->product_price = $data['product_price'];
             $product->product_discount = $data['product_discount'];
-            $product->discount_type = $data['discount_type'] ?? '';
-            $product->final_price = $data['final_price'];
+
+            if(!empty($data['product_discount']) && $data['product_discount'] > 0) {
+                $product->discount_type = 'product';
+                $product->final_price = $data['product_price'] - ($data['product_price'] * $data['product_discount']) / 100;
+            } else {
+                $get_category_discount = Category::select('category_discount')->where('id', $data['category_id'])->first();
+                if($get_category_discount) {
+                    $product->discount_type = '';
+                    $product->final_price = $data['product_price'] - ($data['product_price'] * $get_category_discount->category_discount) / 100;
+                }
+            }
+
+            // $product->final_price = $data['final_price'];
             $product->product_weight = $data['product_weight'];
             $product->description = $data['description'] ?? '';
             $product->wash_care = $data['wash_care'] ?? '';
             $product->search_keywords = $data['search_keywords'] ?? '';
-            $product->fabric = $data['fabric'] ?? '';
-            $product->sleeve = $data['sleeve'] ?? '';
-            $product->pattern = $data['pattern'] ?? '';
-            $product->fit = $data['fit'] ?? '';
-            $product->occasion = $data['occasion'] ?? '';
+            $product->fabric = $data['fabric'];
+            $product->sleeve = $data['sleeve'];
+            $product->pattern = $data['pattern'];
+            $product->fit = $data['fit'];
+            $product->occasion = $data['occasion'];
             $product->meta_title = $data['meta_title'] ?? '';
             $product->meta_description = $data['meta_description'] ?? '';
             $product->meta_keywords = $data['meta_keywords'] ?? '';
@@ -105,15 +135,35 @@ class ProductController extends Controller
             } else {
                 $product->is_featured = 'no';
             }
+            if(!empty($data['is_bestseller'])) {
+                $product->is_bestseller = $data['is_bestseller'];
+            } else {
+                $product->is_bestseller = 'no';
+            }
             $product->status = 1;
             $product->save();
 
-            return redirect('admin/products')->with('success_message', $message);
+            return redirect('admin/products')->with('success_message', 'product added successfully', $message);
         }
 
         $get_categories = Category::getCategories();
         $product_filters = Product::productFilters();
 
         return view('admin.products.add-edit-product')->with(compact('title', 'get_categories', 'product_filters', 'product'));
+    }
+
+    public function deleteProductVideo($id) {
+        $product_video = Product::select('product_video')->where('id', $id)->first();
+
+        $product_video_path = public_path('front/video/products/');
+
+        if(file_exists($product_video_path.$product_video->product_video)) {
+            unlink($product_video_path.$product_video->product_video);
+        }
+
+        Product::where('id', $id)->update(['product_video' => '']);
+
+        $message = 'Product video deleted successfully!!';
+        return redirect()->back()->with('success_message', $message);
     }
 }
