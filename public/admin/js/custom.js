@@ -14,11 +14,11 @@ $(document).ready(function () {
             success: function (resp) {
                 if (resp == false) {
                     $("#verifyCurrentPwd").html(
-                        "<font color='red'>Current password is incorrect</font>",
+                        "<font color='red'>Current password is incorrect</font>"
                     );
                 } else if (resp == true) {
                     $("#verifyCurrentPwd").html(
-                        "<font color='green'>Current password is correct</font>",
+                        "<font color='green'>Current password is correct</font>"
                     );
                 }
             },
@@ -42,11 +42,11 @@ $(document).ready(function () {
             success: function (resp) {
                 if (resp["status"] == 0) {
                     $("#page-" + page_id).html(
-                        "<i class='fas fa-toggle-off' style='color:grey' aria-hidden='true' status='Inactive'></i>",
+                        "<i class='fas fa-toggle-off' style='color:grey' aria-hidden='true' status='Inactive'></i>"
                     );
                 } else if (resp["status"] == 1) {
                     $("#page-" + page_id).html(
-                        "<i class='fas fa-toggle-on' aria-hidden='true' status='Active'></i>",
+                        "<i class='fas fa-toggle-on' aria-hidden='true' status='Active'></i>"
                     );
                 }
             },
@@ -100,11 +100,11 @@ $(document).ready(function () {
             success: function (resp) {
                 if (resp["status"] == 0) {
                     $("#subadmin-" + subadmin_id).html(
-                        "<i class='fas fa-toggle-off' style='color:grey' aria-hidden='true' status='Inactive'></i>",
+                        "<i class='fas fa-toggle-off' style='color:grey' aria-hidden='true' status='Inactive'></i>"
                     );
                 } else if (resp["status"] == 1) {
                     $("#subadmin-" + subadmin_id).html(
-                        "<i class='fas fa-toggle-on' aria-hidden='true' status='Active'></i>",
+                        "<i class='fas fa-toggle-on' aria-hidden='true' status='Active'></i>"
                     );
                 }
             },
@@ -129,11 +129,11 @@ $(document).ready(function () {
             success: function (resp) {
                 if (resp["status"] == 0) {
                     $("#category-" + category_id).html(
-                        "<i class='fas fa-toggle-off' style='color:grey' status='Inactive'></i>",
+                        "<i class='fas fa-toggle-off' style='color:grey' status='Inactive'></i>"
                     );
                 } else if (resp["status"] == 1) {
                     $("#category-" + category_id).html(
-                        "<i class='fas fa-toggle-on' style='color:#3f6ed3' status='Active'></i>",
+                        "<i class='fas fa-toggle-on' style='color:#3f6ed3' status='Active'></i>"
                     );
                 }
             },
@@ -157,11 +157,11 @@ $(document).ready(function () {
             success: function (resp) {
                 if (resp["status"] == 0) {
                     $("#product-" + product_id).html(
-                        "<i class='fas fa-toggle-off' style='color:grey' status='Inactive'></i>",
+                        "<i class='fas fa-toggle-off' style='color:grey' status='Inactive'></i>"
                     );
                 } else if (resp["status"] == 1) {
                     $("#product-" + product_id).html(
-                        "<i class='fas fa-toggle-on' style='color:#3f6ed3' status='Active'></i>",
+                        "<i class='fas fa-toggle-on' style='color:#3f6ed3' status='Active'></i>"
                     );
                 }
             },
@@ -169,5 +169,24 @@ $(document).ready(function () {
                 console.log("error", err);
             },
         });
+    });
+
+    //Add Attribtute Script
+    var maxField = 10;
+    var addButton = $(".add_button");
+    var wrapper = $(".field_wrapper");
+    var fieldHTML =
+        "<div class='controls field_wrapper' style='margin-left: 0px; margin-top: 10px;'><input type='text' name='sku[]' style='width: 120px'/>&nbsp;<input type='text' name='size[]' style='width: 120px'/>&nbsp;<input type='text' name='price[]' style='width: 120px'/>&nbsp;<input type='text' name='stock[]' style='width: 120px'/>&nbsp;<a href='javascript:void(0);' class='remove_button' title='Remove field'><i class='fas fa-minus'></i></a></div>";
+    var x = 1;
+    $(addButton).click(function () {
+        if (x < maxField) {
+            x++;
+            $(wrapper).append(fieldHTML);
+        }
+    });
+    $(wrapper).on("click", ".remove_button", function (e) {
+        e.preventDefault();
+        $(this).parent("div").remove();
+        x--;
     });
 });
