@@ -7,10 +7,12 @@ use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\ProductsImage;
+use App\Models\ProductAttribute;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
+use Intervention\Image\Facades\Image;
 use Validator;
-use Image;
+// use Image;
 
 class ProductController extends Controller
 {
@@ -51,7 +53,7 @@ class ProductController extends Controller
             $message = 'product added successfully';
         } else {
             $title = "Edit product";
-            $product = Product::with('images')->find($id);
+            $product = Product::with(['images', 'attributes'])->find($id);
             $message = 'product updated successfully';
         }
 
@@ -181,6 +183,31 @@ class ProductController extends Controller
                     foreach ($data['image'] as $key => $image) {
                         ProductsImage::where(['product_id' => $id, 'image' => $image])->update(['image_sort' => $data['image_sort'][$key]]);
                     }
+                }
+            }
+
+            foreach ($data['sku'] as $key => $value) {
+                if (!empty($value)) {
+                    $count_sku = ProductAttribute::where('sku', $value)->count();
+                    if ($count_sku > 0) {
+                        $message = 'Product SKU already exists!!';
+                        return redirect()->back()->with('error_message', $message);
+                    }
+
+                    $count_size = ProductAttribute::where(['product_id' => $id, 'size' => $data['size'][$key]])->count();
+                    if ($count_size > 0) {
+                        $message = 'Product size already exists!!';
+                        return redirect()->back()->with('error_message', $message);
+                    }
+
+                    $product_attribute = new ProductAttribute;
+                    $product_attribute->product_id = $id;
+                    $product_attribute->sku = $value;
+                    $product_attribute->size = $data['size'][$key];
+                    $product_attribute->price = $data['price'][$key];
+                    $product_attribute->stock = $data['stock'][$key];
+                    $product_attribute->status = 1;
+                    $product_attribute->save();
                 }
             }
 

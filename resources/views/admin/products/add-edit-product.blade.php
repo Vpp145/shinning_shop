@@ -180,6 +180,72 @@
                                         </table>
                                     </div>
                                     <div class="form-group">
+                                        <label for="product_attributes">Product Attributes</label>
+                                        <div class="field_wrapper">
+                                            <input required title="Required" type="text" name="sku[]"
+                                                id="sku" placeholder="Enter SKU..." style="width: 120px">
+                                            <input required title="Required" type="text" name="size[]"
+                                                id="size" placeholder="Enter SIZE..." style="width: 120px">
+                                            <input required title="Required" type="text" name="price[]"
+                                                id="price" placeholder="Enter PRICE..." style="width: 120px">
+                                            <input required title="Required" type="text" name="stock[]"
+                                                id="stock" placeholder="Enter STOCK..." style="width: 120px">
+                                            <a href="javascript:void(0);" class="add_button" title="Add field"><i
+                                                    class="fas fa-plus"></i></a>
+                                        </div>
+                                    </div>
+                                    @if (count($product['attributes']) > 0)
+                                        <div class="form-group">
+                                            <label>Attributes</label>
+                                            <table cellpadding="5"
+                                                style="background-color: #f5f5f5 !important; width: 100%;">
+                                                <tr>
+                                                    <th>SKU</th>
+                                                    <th>Size</th>
+                                                    <th>Price</th>
+                                                    <th>Stock</th>
+                                                    <th>Action</th>
+                                                </tr>
+                                                @foreach ($product['attributes'] as $attribute)
+                                                    <input style="display: none;" type="text" name="attrId[]"
+                                                        value="{{ $attribute['id'] }}">
+                                                    <tr>
+                                                        <td>{{ $attribute['sku'] }}</td>
+                                                        <td>{{ $attribute['size'] }}</td>
+                                                        <td>
+                                                            <input style="width: 100px" type="number" name="price[]"
+                                                                value="{{ $attribute['price'] }}" required>
+                                                        </td>
+                                                        <td>
+                                                            <input style="width: 100px" type="number" name="stock[]"
+                                                                value="{{ $attribute['stock'] }}" required>
+                                                        </td>
+                                                        <td>
+                                                            @if ($attribute['status'] == 1)
+                                                                <a class="updateAttributeStatus"
+                                                                    id="attribute-{{ $attribute['id'] }}"
+                                                                    href="javascript:void(0)"
+                                                                    attribute_id="{{ $attribute['id'] }}"><i
+                                                                        class="fas fa-toggle-on"></i></a>
+                                                            @else
+                                                                <a class="updateAttributeStatus"
+                                                                    id="attribute-{{ $attribute['id'] }}"
+                                                                    href="javascript:void(0)"
+                                                                    attribute_id="{{ $attribute['id'] }}"><i
+                                                                        class="fas fa-toggle-off"></i></a>
+                                                            @endif
+                                                            &nbsp;&nbsp;
+                                                            <a class="confirmDelete" title="Delete Attribute"
+                                                                href="javascript:void(0)" record='attribute'
+                                                                recordid="{{ $attribute['id'] }}"><i
+                                                                    class="fas fa-trash"></i></a>
+                                                        </td>
+                                                    </tr>
+                                                @endforeach
+                                            </table>
+                                        </div>
+                                    @endif
+                                    <div class="form-group">
                                         <label for="product_video">Product Video (Recommended Size: less than 2 MB)</label>
                                         <input type="file" class="form-control" name="product_video"
                                             id="product_video">
@@ -188,7 +254,7 @@
                                                 href="{{ url('front/video/products/' . $product['product_video']) }}">View
                                                 Video</a>&nbsp;&nbsp;
                                             <a href="javascript::void(0)" class="confirmDelete" record='product-video'
-                                                recordid="{{ $product['id'] }}">Delete Video</a>
+                                                recordid="{{ $product['id'] }}"><i class="fas fa-trash"></i></a>
                                         @endif
                                     </div>
                                     <div class="form-group">
