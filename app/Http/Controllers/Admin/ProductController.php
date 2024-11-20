@@ -3,16 +3,17 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\AdminsRole;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
 use App\Models\ProductsImage;
 use App\Models\ProductAttribute;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Session;
 use Intervention\Image\Facades\Image;
 use Validator;
-// use Image;
 
 class ProductController extends Controller
 {
@@ -21,7 +22,24 @@ class ProductController extends Controller
         Session::put('page', 'products');
         $products = Product::with('category')->get()->toArray();
 
-        return view('admin.products.products')->with(compact('products'));
+        $admin_id = Auth::guard('admin')->user()->id;
+        $module_count = AdminsRole::where(['subadmin_id' => $admin_id, 'module' => 'products'])->count();
+        $products_module = array();
+
+        if (Auth::guard('admin')->user()->type == 'admin') {
+            $products_module['view_access'] = 1;
+            $products_module['edit_access'] = 1;
+            $products_module['full_access'] = 1;
+        } else {
+            if ($module_count == 0) {
+                $message = 'This feature is restricted to this Sub Admins';
+                return redirect('admin/dashboard')->with('error_message', $message);
+            }
+
+            $products_module = AdminsRole::where(['subadmin_id' => $admin_id, 'module' => 'products'])->first()->toArray();
+        }
+
+        return view('admin.products.products')->with(compact('products', 'products_module'));
     }
 
     public function updateProductStatus(Request $request)
@@ -211,6 +229,17 @@ class ProductController extends Controller
                 }
             }
 
+            if (isset($data['attrId'])) {
+                foreach ($data['attrId'] as $attr) {
+                    if (!empty($attr)) {
+                        ProductAttribute::where(['id' => $attr])->update([
+                            'price' => $data['price'][$attr] ?? 0,
+                            'stock' => $data['stock'][$attr] ?? 0
+                        ]);
+                    }
+                }
+            }
+
             return redirect('admin/products')->with('success_message', $message);
         }
 
@@ -257,6 +286,27 @@ class ProductController extends Controller
         ProductsImage::where('id', $id)->delete();
 
         $message = 'Product image deleted successfully!!';
+        return redirect()->back()->with('success_message', $message);
+    }
+
+    public function updateAttributeStatus(Request $request)
+    {
+        if ($request->ajax()) {
+            $data = $request->all();
+            if ($data['status'] == 'Active') {
+                $status = 0;
+            } else {
+                $status = 1;
+            }
+            ProductAttribute::where('id', $data['attribute_id'])->update(['status' => $status]);
+            return response()->json(['status' => $status, 'id' => $data['attribute_id']]);
+        }
+    }
+
+    public function deleteAttribute($id)
+    {
+        ProductAttribute::where('id', $id)->delete();
+        $message = 'Product attribute deleted successfully!!';
         return redirect()->back()->with('success_message', $message);
     }
 }
