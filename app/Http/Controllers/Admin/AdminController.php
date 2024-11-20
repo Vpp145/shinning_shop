@@ -9,17 +9,19 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use App\Models\Admin;
 use App\Models\AdminsRole;
-use Image;
+use Intervention\Image\Facades\Image;
 
 class AdminController extends Controller
 {
-    public function dashboard() {
+    public function dashboard()
+    {
         Session::put('page', 'dashboard');
         return view('admin.dashboard');
     }
 
-    public function login(Request $request) {
-        if($request->isMethod('post')) {
+    public function login(Request $request)
+    {
+        if ($request->isMethod('post')) {
             $data = $request->all();
             // echo '<pre>'; print_r($data); die;
             $rules = [
@@ -33,8 +35,8 @@ class AdminController extends Controller
             ];
             $request->validate($rules, $customMessages);
 
-            if(Auth::guard('admin')->attempt(['email' => $data['email'], 'password' => $data['password'], 'status' => 1])) {
-                if(!empty($_POST['remember'])) {
+            if (Auth::guard('admin')->attempt(['email' => $data['email'], 'password' => $data['password'], 'status' => 1])) {
+                if (!empty($_POST['remember'])) {
                     setcookie('email', $_POST['email'], time() + 3600);
                     setcookie('password', $_POST['password'], time() + 3600);
                 } else {
@@ -49,18 +51,20 @@ class AdminController extends Controller
         return view('admin.login');
     }
 
-    public function logout() {
+    public function logout()
+    {
         Auth::guard('admin')->logout();
         return redirect('admin/login');
     }
 
-    public function updatePassword(Request $request) {
+    public function updatePassword(Request $request)
+    {
         Session::put('page', 'update-password');
-        if($request->isMethod('post')) {
+        if ($request->isMethod('post')) {
             $data = $request->input();
             // echo '<pre>'; print_r($data); die;
-            if(Hash::check($data['current_pwd'], Auth::guard('admin')->user()->password)) {
-                if($data['new_pwd'] == $data['confirm_pwd']) {
+            if (Hash::check($data['current_pwd'], Auth::guard('admin')->user()->password)) {
+                if ($data['new_pwd'] == $data['confirm_pwd']) {
                     Admin::where('email', Auth::guard('admin')->user()->email)->update(['password' => bcrypt($data['new_pwd'])]);
                     return redirect()->back()->with('success_message', 'Password updated successfully!!');
                 } else {
@@ -73,18 +77,20 @@ class AdminController extends Controller
         return view('admin.update-password');
     }
 
-    public function checkCurrentPassword(Request $request) {
+    public function checkCurrentPassword(Request $request)
+    {
         $data = $request->all();
-        if(Hash::check($data['current_pwd'], Auth::guard('admin')->user()->password)) {
+        if (Hash::check($data['current_pwd'], Auth::guard('admin')->user()->password)) {
             return true;
         } else {
             return false;
         }
     }
 
-    public function updateAdminDetails(Request $request) {
+    public function updateAdminDetails(Request $request)
+    {
         Session::put('page', 'update-admin-details');
-        if($request->isMethod('post')) {
+        if ($request->isMethod('post')) {
             $data = $request->all();
             $rules = [
                 'admin_name' => 'required|alpha',
@@ -98,15 +104,15 @@ class AdminController extends Controller
             ];
             $request->validate($rules, $customMessages);
 
-            if($request->hasFile('admin_image')) {
+            if ($request->hasFile('admin_image')) {
                 $image_tmp = $request->file('admin_image');
-                if($image_tmp->isValid()) {
+                if ($image_tmp->isValid()) {
                     $extension = $image_tmp->getClientOriginalExtension();
-                    $filename = rand(111, 99999).'.'.$extension;
-                    $image_path = 'admin/img/photos/'.$filename;
+                    $filename = rand(111, 99999) . '.' . $extension;
+                    $image_path = 'admin/img/photos/' . $filename;
                     Image::make($image_tmp)->save($image_path);
                 }
-            } else if($data['current_image'] != '') {
+            } else if ($data['current_image'] != '') {
                 $filename = $data['current_image'];
             } else {
                 $filename = '';
@@ -118,16 +124,18 @@ class AdminController extends Controller
         return view('admin.update-admin-details');
     }
 
-    public function subadmins() {
+    public function subadmins()
+    {
         Session::put('page', 'sub-admins');
         $subadmins = Admin::where('type', 'subadmin')->get();
         return view('admin.subadmins.subadmins')->with(compact('subadmins'));
     }
 
-    public function updateSubadminStatus(Request $request) {
-        if($request->ajax()) {
+    public function updateSubadminStatus(Request $request)
+    {
+        if ($request->ajax()) {
             $data = $request->all();
-            if($data['status'] == 'Active') {
+            if ($data['status'] == 'Active') {
                 $status = 0;
             } else {
                 $status = 1;
@@ -137,13 +145,15 @@ class AdminController extends Controller
         }
     }
 
-    public function deleteSubadmin($id) {
+    public function deleteSubadmin($id)
+    {
         Admin::where('id', $id)->delete();
         return redirect()->back()->with('success_message', 'Subadmin deleted successfully!!');
     }
 
-    public function addEditSubadmin(Request $request, $id = null) {
-        if($id == '') {
+    public function addEditSubadmin(Request $request, $id = null)
+    {
+        if ($id == '') {
             $title = 'Add Subadmin';
             $subadmin = new Admin;
             $message = 'Subadmin added successfully!!';
@@ -153,12 +163,12 @@ class AdminController extends Controller
             $message = 'Subadmin updated successfully!!';
         }
 
-        if($request->isMethod('post')) {
+        if ($request->isMethod('post')) {
             $data = $request->all();
             // echo '<pre>'; print_r($data); die;
-            if($id == '') {
+            if ($id == '') {
                 $count = Admin::where('email', $data['subadmin_email'])->count();
-                if($count > 0) {
+                if ($count > 0) {
                     return redirect('admin/sub-admins')->with('error_message', 'Subadmin email already exists!!');
                 }
             }
@@ -176,15 +186,15 @@ class AdminController extends Controller
             ];
             $request->validate($rules, $customMessages);
 
-            if($request->hasFile('subadmin_image')) {
+            if ($request->hasFile('subadmin_image')) {
                 $image_tmp = $request->file('subadmin_image');
-                if($image_tmp->isValid()) {
+                if ($image_tmp->isValid()) {
                     $extension = $image_tmp->getClientOriginalExtension();
-                    $image_name = rand(111, 99999).'.'.$extension;
-                    $image_path = 'admin/img/photos/'.$image_name;
+                    $image_name = rand(111, 99999) . '.' . $extension;
+                    $image_path = 'admin/img/photos/' . $image_name;
                     Image::make($image_tmp)->save($image_path);
                 }
-            } else if(!empty($data['current_subadmin_image'])) {
+            } else if (!empty($data['current_subadmin_image'])) {
                 $image_name = $data['current_subadmin_image'];
             } else {
                 $image_name = '';
@@ -193,11 +203,11 @@ class AdminController extends Controller
             $subadmin->image = $image_name;
             $subadmin->name = $data['subadmin_name'];
             $subadmin->mobile = $data['subadmin_mobile'];
-            if($id == '') {
+            if ($id == '') {
                 $subadmin->email = $data['subadmin_email'];
                 $subadmin->type = 'subadmin';
             }
-            if($data['subadmin_password'] != '') {
+            if ($data['subadmin_password'] != '') {
                 $subadmin->password = bcrypt($data['subadmin_password']);
             }
             $subadmin->save();
@@ -206,12 +216,13 @@ class AdminController extends Controller
         return view('admin.subadmins.add_edit_subadmin')->with(compact('title', 'subadmin'));
     }
 
-    public function updateRole(Request $request, $id) {
+    public function updateRole(Request $request, $id)
+    {
         if ($request->isMethod('post')) {
             $data = $request->all();
 
             // Define modules and associated permissions to handle
-            $modules = ['cms_pages', 'categories'];  // Add more modules here as needed
+            $modules = ['cms_pages', 'categories', 'products'];  // Add more modules here as needed
 
             foreach ($modules as $module) {
                 // Retrieve checkbox values for each permission, defaulting to 0 if not checked
@@ -221,27 +232,27 @@ class AdminController extends Controller
 
                 // Check if the role for the module already exists for the subadmin
                 $role_count = AdminsRole::where('subadmin_id', $data['subadmin_id'])
-                                         ->where('module', $module)
-                                         ->count();
+                    ->where('module', $module)
+                    ->count();
 
                 if ($role_count > 0) {
                     // Update the existing role permissions
                     AdminsRole::where('subadmin_id', $data['subadmin_id'])
-                              ->where('module', $module)
-                              ->update([
-                                  'view_access' => $view_access,
-                                  'edit_access' => $edit_access,
-                                  'full_access' => $full_access
-                              ]);
+                        ->where('module', $module)
+                        ->update([
+                            'view_access' => $view_access,
+                            'edit_access' => $edit_access,
+                            'full_access' => $full_access
+                        ]);
                 } else {
                     // Create a new role entry if one doesn't exist
-                    AdminsRole::create([
-                        'subadmin_id' => $data['subadmin_id'],
-                        'module' => $module,
-                        'view_access' => $view_access,
-                        'edit_access' => $edit_access,
-                        'full_access' => $full_access,
-                    ]);
+                    $adminsRole = new AdminsRole();
+                    $adminsRole->subadmin_id = $id; // Use $id instead of $data['subadmin_id']
+                    $adminsRole->module = $module;
+                    $adminsRole->view_access = $view_access;
+                    $adminsRole->edit_access = $edit_access;
+                    $adminsRole->full_access = $full_access;
+                    $adminsRole->save();
                 }
             }
 

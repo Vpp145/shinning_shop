@@ -46,5 +46,8 @@ Route::prefix('/admin')->namespace('App\Http\Controllers\Admin')->group(function
         Route::match(['get', 'post'], 'add-edit-product/{id?}', [ProductController::class, 'addEditProduct']);
         Route::get('delete-product-video/{id}', [ProductController::class, 'deleteProductVideo']);
         Route::get('delete-product-image/{id}', [ProductController::class, 'deleteProductImage']);
+
+        //attributes
+        Route::post('update-attribute-status', [ProductController::class, 'updateAttributeStatus']);
     });
 });

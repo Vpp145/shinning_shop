@@ -171,6 +171,34 @@ $(document).ready(function () {
         });
     });
 
+    //update attribute status
+    $(document).on("click", ".updateAttributeStatus", function () {
+        var status = $(this).children("i").attr("status");
+        var attribute_id = $(this).attr("attribute_id");
+        $.ajax({
+            headers: {
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+            },
+            type: "post",
+            url: "/admin/update-attribute-status",
+            data: { status: status, attribute_id: attribute_id },
+            success: function (resp) {
+                if (resp["status"] == 0) {
+                    $("#attribute-" + attribute_id).html(
+                        "<i class='fas fa-toggle-off' style='color:grey' status='Inactive'></i>"
+                    );
+                } else if (resp["status"] == 1) {
+                    $("#attribute-" + attribute_id).html(
+                        "<i class='fas fa-toggle-on' style='color:#3f6ed3' status='Active'></i>"
+                    );
+                }
+            },
+            error: function (err) {
+                console.log("error", err);
+            },
+        });
+    });
+
     //Add Attribtute Script
     var maxField = 10;
     var addButton = $(".add_button");

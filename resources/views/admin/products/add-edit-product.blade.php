@@ -182,14 +182,14 @@
                                     <div class="form-group">
                                         <label for="product_attributes">Product Attributes</label>
                                         <div class="field_wrapper">
-                                            <input required title="Required" type="text" name="sku[]"
-                                                id="sku" placeholder="Enter SKU..." style="width: 120px">
-                                            <input required title="Required" type="text" name="size[]"
-                                                id="size" placeholder="Enter SIZE..." style="width: 120px">
-                                            <input required title="Required" type="text" name="price[]"
-                                                id="price" placeholder="Enter PRICE..." style="width: 120px">
-                                            <input required title="Required" type="text" name="stock[]"
-                                                id="stock" placeholder="Enter STOCK..." style="width: 120px">
+                                            <input title="Required" type="text" name="sku[]" id="sku"
+                                                placeholder="Enter SKU..." style="width: 120px">
+                                            <input title="Required" type="text" name="size[]" id="size"
+                                                placeholder="Enter SIZE..." style="width: 120px">
+                                            <input title="Required" type="text" name="price[]" id="price"
+                                                placeholder="Enter PRICE..." style="width: 120px">
+                                            <input title="Required" type="text" name="stock[]" id="stock"
+                                                placeholder="Enter STOCK..." style="width: 120px">
                                             <a href="javascript:void(0);" class="add_button" title="Add field"><i
                                                     class="fas fa-plus"></i></a>
                                         </div>
@@ -225,14 +225,16 @@
                                                                 <a class="updateAttributeStatus"
                                                                     id="attribute-{{ $attribute['id'] }}"
                                                                     href="javascript:void(0)"
-                                                                    attribute_id="{{ $attribute['id'] }}"><i
-                                                                        class="fas fa-toggle-on"></i></a>
+                                                                    attribute_id="{{ $attribute['id'] }}"
+                                                                    style="color:#3f6ed3"><i class="fas fa-toggle-on"
+                                                                        status="Active"></i></a>
                                                             @else
                                                                 <a class="updateAttributeStatus"
                                                                     id="attribute-{{ $attribute['id'] }}"
                                                                     href="javascript:void(0)"
-                                                                    attribute_id="{{ $attribute['id'] }}"><i
-                                                                        class="fas fa-toggle-off"></i></a>
+                                                                    attribute_id="{{ $attribute['id'] }}"
+                                                                    style="color:grey"><i class="fas fa-toggle-off"
+                                                                        status="Inactive"></i></a>
                                                             @endif
                                                             &nbsp;&nbsp;
                                                             <a class="confirmDelete" title="Delete Attribute"

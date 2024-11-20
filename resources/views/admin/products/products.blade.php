@@ -28,11 +28,11 @@
                         <div class="card">
                             <div class="card-header">
                                 <h3 class="card-title">Products</h3>
-                                {{-- @if ($products_module['edit_access'] == 1 || $products_module['full_access'] == 1) --}}
-                                <a style="max-width: 150px; float: right; display:inline-block"
-                                    href="{{ url('admin/add-edit-product') }}" class="btn btn-block btn-primary">Add
-                                    Products</a>
-                                {{-- @endif --}}
+                                @if ($products_module['edit_access'] == 1 || $products_module['full_access'] == 1)
+                                    <a style="max-width: 150px; float: right; display:inline-block"
+                                        href="{{ url('admin/add-edit-product') }}" class="btn btn-block btn-primary">Add
+                                        Products</a>
+                                @endif
                             </div>
                             @if (Session::has('success_message'))
                                 <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -70,25 +70,32 @@
                                                     @endif
                                                 </td>
                                                 <td>
-                                                    @if ($product['status'] == 1)
-                                                        <a class="updateProductStatus" id="product-{{ $product['id'] }}"
-                                                            product_id="{{ $product['id'] }}" href="javascript:void(0)"
-                                                            style="color:#3f6ed3"><i class="fas fa-toggle-on"
-                                                                status="Active"></i></a>
-                                                    @else
-                                                        <a class="updateProductStatus" id="product-{{ $product['id'] }}"
-                                                            product_id="{{ $product['id'] }}" href="javascript:void(0)"
-                                                            style="color:grey"><i class="fas fa-toggle-off"
-                                                                status="Inactive"></i></a>
+                                                    @if ($products_module['edit_access'] == 1 || $products_module['full_access'] == 1)
+                                                        @if ($product['status'] == 1)
+                                                            <a class="updateProductStatus" id="product-{{ $product['id'] }}"
+                                                                product_id="{{ $product['id'] }}" href="javascript:void(0)"
+                                                                style="color:#3f6ed3"><i class="fas fa-toggle-on"
+                                                                    status="Active"></i></a>
+                                                        @else
+                                                            <a class="updateProductStatus" id="product-{{ $product['id'] }}"
+                                                                product_id="{{ $product['id'] }}" href="javascript:void(0)"
+                                                                style="color:grey"><i class="fas fa-toggle-off"
+                                                                    status="Inactive"></i></a>
+                                                        @endif
                                                     @endif
                                                     &nbsp;&nbsp;
-                                                    <a style="color:#3f6ed3"
-                                                        href="{{ url('admin/add-edit-product/' . $product['id']) }}"><i
-                                                            class="fas fa-edit"></i></a>
+                                                    @if ($products_module['edit_access'] == 1 || $products_module['full_access'] == 1)
+                                                        <a style="color:#3f6ed3"
+                                                            href="{{ url('admin/add-edit-product/' . $product['id']) }}"><i
+                                                                class="fas fa-edit"></i></a>
+                                                    @endif
                                                     &nbsp;&nbsp;
-                                                    <a class="confirmDelete" title="Delete Product"
-                                                        href="javascript:void(0)" record='product' style="color:#3f6ed3"
-                                                        recordid="{{ $product['id'] }}"><i class="fas fa-trash"></i></a>
+                                                    @if ($products_module['full_access'] == 1)
+                                                        <a class="confirmDelete" title="Delete Product"
+                                                            href="javascript:void(0)" record='product' style="color:#3f6ed3"
+                                                            recordid="{{ $product['id'] }}"><i
+                                                                class="fas fa-trash"></i></a>
+                                                    @endif
                                                 </td>
                                             </tr>
                                         @endforeach

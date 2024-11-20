@@ -67,6 +67,7 @@
                                     // Set default values for checkbox states
                                     $view_cms_pages = $edit_cms_pages = $full_cms_pages = '';
                                     $view_categories = $edit_categories = $full_categories = '';
+                                    $view_products = $edit_products = $full_products = '';
 
                                     if (!empty($subadmin_roles)) {
                                         foreach ($subadmin_roles as $role) {
@@ -79,6 +80,11 @@
                                                 $view_categories = $role['view_access'] == 1 ? 'checked' : '';
                                                 $edit_categories = $role['edit_access'] == 1 ? 'checked' : '';
                                                 $full_categories = $role['full_access'] == 1 ? 'checked' : '';
+                                            }
+                                            if ($role['module'] == 'products') {
+                                                $view_products = $role['view_access'] == 1 ? 'checked' : '';
+                                                $edit_products = $role['edit_access'] == 1 ? 'checked' : '';
+                                                $full_products = $role['full_access'] == 1 ? 'checked' : '';
                                             }
                                         }
                                     }
@@ -109,6 +115,18 @@
                                         &nbsp;&nbsp;&nbsp;
                                         <input type="checkbox" name="categories_full" value="1"
                                             {{ $full_categories }}>
+                                        Full Access
+                                    </div>
+
+                                    <div class="form-group col-md-12">
+                                        <label for="title">Products: &nbsp;&nbsp;&nbsp;</label>
+                                        <input type="checkbox" name="products_view" value="1" {{ $view_products }}>
+                                        View Access
+                                        &nbsp;&nbsp;&nbsp;
+                                        <input type="checkbox" name="products_edit" value="1" {{ $edit_products }}>
+                                        View/Edit Access
+                                        &nbsp;&nbsp;&nbsp;
+                                        <input type="checkbox" name="products_full" value="1" {{ $full_products }}>
                                         Full Access
                                     </div>
                                 </div>
