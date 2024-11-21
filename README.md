@@ -8,7 +8,7 @@ This Website is made out with laravel plateform and it's ecommerce website with 
 -   postgresql (Used)
 -   sqlite
 -   sqlsrv
--   if you want to use mongodb than you need to do some changes and installation in php and it's cli for mongodb databse.
+-   if you want to use mongodb than you need to do some changes and installation in php and it's cli for mongodb database.
 
 ## Admin
 
