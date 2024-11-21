@@ -1,4 +1,4 @@
-# Tech Shop (Laravel 11)
+# Shinning Shop (Laravel 11)
 
 This Website is made out with laravel plateform and it's ecommerce website with many kind of new features and attractive UI Interface so Customers will use easily and can able to contibute their time with us.
 

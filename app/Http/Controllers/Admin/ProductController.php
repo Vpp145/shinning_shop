@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\AdminsRole;
+use App\Models\Brand;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\Category;
@@ -80,6 +81,7 @@ class ProductController extends Controller
             // echo "<pre>"; print_r($data); die;
             $rules = [
                 'category_id' => 'required',
+                'brand_id' => 'required',
                 'product_name' => 'required|regex:/^[\pL\s\-]+$/u',
                 'product_code' => 'required|regex:/^[\w-]*$/',
                 'product_price' => 'required|numeric',
@@ -88,6 +90,7 @@ class ProductController extends Controller
             ];
             $customMessages = [
                 'category_id.required' => 'Category is required',
+                'brand_id.required' => 'Brand is required',
                 'product_name.required' => 'Name is required',
                 'product_name.regex' => 'Valid name is required',
                 'product_code.required' => 'Code is required',
@@ -121,6 +124,7 @@ class ProductController extends Controller
             }
 
             $product->category_id = $data['category_id'];
+            $product->brand_id = $data['brand_id'];
             $product->product_name = $data['product_name'];
             $product->product_code = $data['product_code'];
             $product->product_color = $data['product_color'];
@@ -232,9 +236,9 @@ class ProductController extends Controller
             if (isset($data['attrId'])) {
                 foreach ($data['attrId'] as $attr) {
                     if (!empty($attr)) {
-                        ProductAttribute::where(['id' => $attr])->update([
-                            'price' => $data['price'][$attr] ?? 0,
-                            'stock' => $data['stock'][$attr] ?? 0
+                        ProductAttribute::where(['_id' => $attr])->update([
+                            'price' => $data['price'][$attr],
+                            'stock' => $data['stock'][$attr]
                         ]);
                     }
                 }
@@ -246,7 +250,10 @@ class ProductController extends Controller
         $get_categories = Category::getCategories();
         $product_filters = Product::productFilters();
 
-        return view('admin.products.add-edit-product')->with(compact('title', 'get_categories', 'product_filters', 'product'));
+        $brands = Brand::where('status', 1)->get();
+        $brands = json_decode(json_encode($brands), true);
+
+        return view('admin.products.add-edit-product')->with(compact('title', 'get_categories', 'product_filters', 'product', 'brands'));
     }
 
     public function deleteProductVideo($id)
