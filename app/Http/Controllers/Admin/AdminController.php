@@ -222,7 +222,7 @@ class AdminController extends Controller
             $data = $request->all();
 
             // Define modules and associated permissions to handle
-            $modules = ['cms_pages', 'categories', 'products'];  // Add more modules here as needed
+            $modules = ['cms_pages', 'categories', 'products', 'brands'];  // Add more modules here as needed
 
             foreach ($modules as $module) {
                 // Retrieve checkbox values for each permission, defaulting to 0 if not checked
