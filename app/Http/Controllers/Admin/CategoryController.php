@@ -8,11 +8,12 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\AdminsRole;
-use Image;
+use Intervention\Image\Facades\Image;
 
 class CategoryController extends Controller
 {
-    public function categories() {
+    public function categories()
+    {
         Session::put('page', 'categories');
         $categories = Category::with('parentCategory')->get()->toArray();
         $categories = json_decode(json_encode($categories), true);
@@ -43,7 +44,8 @@ class CategoryController extends Controller
         return view('admin.categories.categories')->with(compact('categories', 'categories_module'));
     }
 
-    public function updateCategoryStatus(Request $request) {
+    public function updateCategoryStatus(Request $request)
+    {
         if ($request->ajax()) {
             $data = $request->all();
             if ($data['status'] == 'Active') {
@@ -53,16 +55,18 @@ class CategoryController extends Controller
             }
 
             Category::where('id', $data['category_id'])->update(['status' => $status]);
-            return response()->json(['status'=>$status, 'category_id'=>$data['category_id']]);
+            return response()->json(['status' => $status, 'category_id' => $data['category_id']]);
         }
     }
 
-    public function deleteCategory($id) {
-            Category::where('id', $id)->delete();
-            return redirect()->back()->with('success_message', 'category deleted successfully!!');
+    public function deleteCategory($id)
+    {
+        Category::where('id', $id)->delete();
+        return redirect()->back()->with('success_message', 'category deleted successfully!!');
     }
 
-    public function addEditCategory(Request $request, $id = null) {
+    public function addEditCategory(Request $request, $id = null)
+    {
         if ($id == "") {
             $title = "Add Category";
             $category = new Category;
@@ -77,7 +81,7 @@ class CategoryController extends Controller
             $data = $request->all();
             // echo "<pre>"; print_r($data); die;
 
-            if($id == '') {
+            if ($id == '') {
                 $rules = [
                     'category_name' => 'required|regex:/^[\pL\s\-]+$/u',
                     'url' => 'required|unique:categories',
@@ -96,16 +100,16 @@ class CategoryController extends Controller
             ];
             $request->validate($rules, $customMessages);
 
-            if($data['category_discount'] == '') {
+            if ($data['category_discount'] == '') {
                 $data['category_discount'] = 0;
             }
 
-            if($request->hasFile('category_image')) {
+            if ($request->hasFile('category_image')) {
                 $image_tmp = $request->file('category_image');
-                if($image_tmp->isValid()) {
+                if ($image_tmp->isValid()) {
                     $extension = $image_tmp->getClientOriginalExtension();
-                    $image_name = rand(111, 99999).'.'.$extension;
-                    $image_path = public_path('front/images/categories/'.$image_name);
+                    $image_name = rand(111, 99999) . '.' . $extension;
+                    $image_path = public_path('front/images/categories/' . $image_name);
                     Image::make($image_tmp)->save($image_path);
 
                     $category->category_image = $image_name;
@@ -132,11 +136,12 @@ class CategoryController extends Controller
         return view('admin.categories.add_edit_category', compact('title', 'category', 'get_categories'));
     }
 
-    public function deleteCategoryImage($id) {
+    public function deleteCategoryImage($id)
+    {
         $category_image = Category::select('category_image')->where('id', $id)->first();
         $category_image_path = 'front/images/categories/';
-        if (file_exists($category_image_path.$category_image->category_image)) {
-            unlink($category_image_path.$category_image->category_image);
+        if (file_exists($category_image_path . $category_image->category_image)) {
+            unlink($category_image_path . $category_image->category_image);
         }
 
         Category::where('id', $id)->update(['category_image' => '']);

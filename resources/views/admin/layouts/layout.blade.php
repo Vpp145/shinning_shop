@@ -68,6 +68,7 @@
             $('#subadmins').DataTable();
             $('#categories').DataTable();
             $('#products').DataTable();
+            $('#brands').DataTable();
         });
     </script>
     <!-- SweetAlert -->

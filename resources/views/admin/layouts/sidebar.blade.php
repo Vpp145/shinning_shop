@@ -16,7 +16,8 @@
                     <img src="{{ asset('admin/img/photos/' . Auth::guard('admin')->user()->image) }}"
                         class="img-circle elevation-2" alt="User Image">
                 @else
-                    <img src="{{ asset('admin/img/avatar.png') }}" class="img-circle elevation-2" alt="User Image">
+                    <img src="{{ asset('admin/img/avatar.png') }}" class="img-circle elevation-2 rounded-circle"
+                        alt="User Image">
                 @endif
             </div>
             <div class="info">
@@ -47,10 +48,11 @@
                         Session::get('page') == 'update-admin-details' ||
                         Session::get('page') == 'sub-admins')
                     <?php $active = 'active'; ?>
+                    <?php $open = 'menu-open'; ?>
                 @else
                     <?php $active = ''; ?>
                 @endif
-                <li class="nav-item menu-open">
+                <li class="nav-item {{ $open ?? '' }}">
                     <a href="#" class="nav-link {{ $active }}">
                         <i class="nav-icon fa fa-user" aria-hidden="true"></i>
                         <p>
@@ -125,6 +127,17 @@
                     <a href="{{ url('admin/products') }}" class="nav-link {{ $active }}">
                         <i class="fas fa-box nav-icon"></i>
                         <p>Products</p>
+                    </a>
+                </li>
+                @if (Session::get('page') == 'brands')
+                    @php $active = 'active' @endphp
+                @else
+                    @php $active = '' @endphp
+                @endif
+                <li class="nav-item">
+                    <a href="{{ url('admin/brands') }}" class="nav-link {{ $active }}">
+                        <i class="fas fa-tags nav-icon"></i>
+                        <p>Brands</p>
                     </a>
                 </li>
             </ul>
