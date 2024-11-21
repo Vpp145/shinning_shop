@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CmsController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
@@ -46,8 +47,13 @@ Route::prefix('/admin')->namespace('App\Http\Controllers\Admin')->group(function
         Route::match(['get', 'post'], 'add-edit-product/{id?}', [ProductController::class, 'addEditProduct']);
         Route::get('delete-product-video/{id}', [ProductController::class, 'deleteProductVideo']);
         Route::get('delete-product-image/{id}', [ProductController::class, 'deleteProductImage']);
-
         //attributes
         Route::post('update-attribute-status', [ProductController::class, 'updateAttributeStatus']);
+        Route::get('delete-attribute/{id}', [ProductController::class, 'deleteAttribute']);
+
+        //brands
+        Route::get('brands', [BrandController::class, 'brands']);
+        Route::post('update-brand-status', [BrandController::class, 'updateBrandStatus']);
+        Route::get('delete-brand/{id}', [BrandController::class, 'deleteBrand']);
     });
 });
