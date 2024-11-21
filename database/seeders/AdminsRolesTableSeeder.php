@@ -14,8 +14,8 @@ class AdminsRolesTableSeeder extends Seeder
     public function run(): void
     {
         $admin_records = [
-            ['subadmin_id' => '3', 'module' => 'cms_pages', 'view_access' => 1, 'edit_access' => 1, 'full_access' => 1],
-            ['subadmin_id' => '4', 'module' => 'cms_pages', 'view_access' => 1, 'edit_access' => 1, 'full_access' => 1],
+            ['subadmin_id' => '673f27bafbf7df015f0fbf43', 'module' => 'cms_pages', 'view_access' => 1, 'edit_access' => 1, 'full_access' => 1],
+            ['subadmin_id' => '673f27bafbf7df015f0fbf44', 'module' => 'cms_pages', 'view_access' => 1, 'edit_access' => 1, 'full_access' => 1],
         ];
 
         AdminsRole::insert($admin_records);

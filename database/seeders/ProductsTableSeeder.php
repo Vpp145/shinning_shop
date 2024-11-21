@@ -14,7 +14,7 @@ class ProductsTableSeeder extends Seeder
     public function run(): void
     {
         $product = new Product();
-        $product->category_id = 8;
+        $product->category_id = '673f2a0beec1a742eb0abe23';
         $product->brand_id = null;
         $product->product_name = 'Blue T-Shirt';
         $product->product_code = 'BT001';
@@ -43,7 +43,7 @@ class ProductsTableSeeder extends Seeder
         $product->save();
 
         $product = new Product();
-        $product->category_id = 8;
+        $product->category_id = '673f2a0beec1a742eb0abe23';
         $product->brand_id = null;
         $product->product_name = 'Red T-Shirt';
         $product->product_code = 'RT001';
