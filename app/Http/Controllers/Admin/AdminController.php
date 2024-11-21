@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use App\Models\Admin;
 use App\Models\AdminsRole;
+use App\Models\Brand;
+use App\Models\Category;
+use App\Models\Product;
+use App\Models\User;
 use Intervention\Image\Facades\Image;
 
 class AdminController extends Controller
@@ -16,7 +20,11 @@ class AdminController extends Controller
     public function dashboard()
     {
         Session::put('page', 'dashboard');
-        return view('admin.dashboard');
+        $categories_count = Category::get()->count();
+        $products_count = Product::get()->count();
+        $brands_count = Brand::get()->count();
+        $users_count = User::get()->count();
+        return view('admin.dashboard')->with(compact('categories_count', 'products_count', 'brands_count', 'users_count'));
     }
 
     public function login(Request $request)
