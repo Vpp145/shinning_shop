@@ -183,7 +183,7 @@
                                                         <a style="color: #3f6ed3" class="confirmDelete"
                                                             title="Delete Product Image" href="javascript:void(0)"
                                                             record='product-image' style="color:#3f6ed3"
-                                                            recordid="{{ $image['id'] }}"><i
+                                                            recordid="{{ $image['_id'] }}"><i
                                                                 class="fas fa-trash"></i></a>
                                                     </td>
                                                 @endforeach
@@ -219,38 +219,40 @@
                                                 </tr>
                                                 @foreach ($product['attributes'] as $attribute)
                                                     <input style="display: none;" type="text" name="attrId[]"
-                                                        value="{{ $attribute['id'] }}">
+                                                        value="{{ $attribute['_id'] }}">
                                                     <tr>
                                                         <td>{{ $attribute['sku'] }}</td>
                                                         <td>{{ $attribute['size'] }}</td>
                                                         <td>
-                                                            <input style="width: 100px" type="number" name="price[]"
+                                                            <input style="width: 100px" type="number"
+                                                                name="price[{{ $attribute['_id'] }}]"
                                                                 value="{{ $attribute['price'] }}" required>
                                                         </td>
                                                         <td>
-                                                            <input style="width: 100px" type="number" name="stock[]"
+                                                            <input style="width: 100px" type="number"
+                                                                name="stock[{{ $attribute['_id'] }}]"
                                                                 value="{{ $attribute['stock'] }}" required>
                                                         </td>
                                                         <td>
                                                             @if ($attribute['status'] == 1)
                                                                 <a class="updateAttributeStatus"
-                                                                    id="attribute-{{ $attribute['id'] }}"
+                                                                    id="attribute-{{ $attribute['_id'] }}"
                                                                     href="javascript:void(0)"
-                                                                    attribute_id="{{ $attribute['id'] }}"
+                                                                    attribute_id="{{ $attribute['_id'] }}"
                                                                     style="color:#3f6ed3"><i class="fas fa-toggle-on"
                                                                         status="Active"></i></a>
                                                             @else
                                                                 <a class="updateAttributeStatus"
-                                                                    id="attribute-{{ $attribute['id'] }}"
+                                                                    id="attribute-{{ $attribute['_id'] }}"
                                                                     href="javascript:void(0)"
-                                                                    attribute_id="{{ $attribute['id'] }}"
+                                                                    attribute_id="{{ $attribute['_id'] }}"
                                                                     style="color:grey"><i class="fas fa-toggle-off"
                                                                         status="Inactive"></i></a>
                                                             @endif
                                                             &nbsp;&nbsp;
                                                             <a class="confirmDelete" title="Delete Attribute"
                                                                 href="javascript:void(0)" record='attribute'
-                                                                recordid="{{ $attribute['id'] }}"><i
+                                                                recordid="{{ $attribute['_id'] }}"><i
                                                                     class="fas fa-trash"></i></a>
                                                         </td>
                                                     </tr>
@@ -267,7 +269,7 @@
                                                 href="{{ url('front/video/products/' . $product['product_video']) }}">View
                                                 Video</a>&nbsp;&nbsp;
                                             <a href="javascript::void(0)" class="confirmDelete" record='product-video'
-                                                recordid="{{ $product['id'] }}"><i class="fas fa-trash"></i></a>
+                                                recordid="{{ $product['_id'] }}"><i class="fas fa-trash"></i></a>
                                         @endif
                                     </div>
                                     <div class="form-group">

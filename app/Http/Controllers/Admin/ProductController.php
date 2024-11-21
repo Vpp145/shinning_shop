@@ -236,9 +236,9 @@ class ProductController extends Controller
             if (isset($data['attrId'])) {
                 foreach ($data['attrId'] as $attr) {
                     if (!empty($attr)) {
-                        ProductAttribute::where(['id' => $attr])->update([
-                            'price' => $data['price'][$attr] ?? 0,
-                            'stock' => $data['stock'][$attr] ?? 0
+                        ProductAttribute::where(['_id' => $attr])->update([
+                            'price' => $data['price'][$attr],
+                            'stock' => $data['stock'][$attr]
                         ]);
                     }
                 }
