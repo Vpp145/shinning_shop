@@ -11,6 +11,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+//Admin
 Route::prefix('/admin')->namespace('App\Http\Controllers\Admin')->group(function () {
     Route::match(['get', 'post'], 'login', [AdminController::class, 'login']);
     Route::group(['middleware' => ['admin']], function () {
@@ -55,5 +56,8 @@ Route::prefix('/admin')->namespace('App\Http\Controllers\Admin')->group(function
         Route::get('brands', [BrandController::class, 'brands']);
         Route::post('update-brand-status', [BrandController::class, 'updateBrandStatus']);
         Route::get('delete-brand/{id}', [BrandController::class, 'deleteBrand']);
+        Route::match(['get', 'post'], 'add-edit-brand/{id?}', [BrandController::class, 'addEditBrand']);
+        Route::get('delete-brand-image/{id}', [BrandController::class, 'deleteBrandImage']);
+        Route::get('delete-brand-logo/{id}', [BrandController::class, 'deleteBrandLogo']);
     });
 });
