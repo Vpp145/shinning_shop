@@ -21,6 +21,7 @@ This Website is made out with laravel plateform and it's ecommerce website with 
 -   Categories
 -   Products
 -   Brands
+-   Banners (Home Page Dynamic)
 
 ## Frontend
 

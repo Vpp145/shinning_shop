@@ -58,7 +58,9 @@
                                     <tbody>
                                         @foreach ($banners as $banner)
                                             <tr>
-                                                <td>{{ $banner['image'] }}</td>
+                                                <td><img width="300" height="170" class="img-fluid"
+                                                        src="{{ asset('front/images/banners/' . $banner['image']) }}"
+                                                        alt=""></td>
                                                 <td>{{ $banner['type'] }}</td>
                                                 <td>{{ $banner['link'] }}</td>
                                                 <td>{{ $banner['title'] }}</td>
