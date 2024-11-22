@@ -67,11 +67,6 @@ class BannerController extends Controller
 
     public function addEditBanner(Request $request, $id = null)
     {
-        $admin_type = Auth::guard('admin')->user()->type;
-        if ($admin_type == 'vendor') {
-            $message = 'You Have No Rights To Access This Functionality!!';
-            return redirect('admin/dashboard')->with('error_message', $message);
-        }
         Session::put('page', 'banners');
         if ($id == '') {
             $banner = new Banner();
@@ -86,28 +81,26 @@ class BannerController extends Controller
         if ($request->isMethod('post')) {
             $data = $request->all();
 
+            if ($id == '') {
+                $rules = [
+                    'type' => 'required',
+                    'image' => 'required',
+                ];
+
+                $customMessages = [
+                    'type.required' => 'Banner type is required',
+                    'image.required' => 'Banner image is required',
+                ];
+
+                $request->validate($rules, $customMessages);
+            }
+
             $banner->type = $data['type'];
             $banner->link = $data['link'];
             $banner->title = $data['title'];
             $banner->alt = $data['alt'];
             $banner->sort = $data['sort'];
-
-            if ($data['type'] == 'slider') {
-                $width = '1920';
-                $height = '900';
-            } elseif ($data['type'] == 'fix_1') {
-                $width = '890';
-                $height = '890';
-            } elseif ($data['type'] == 'fix_2') {
-                $width = '1268';
-                $height = '890';
-            } elseif ($data['type'] == 'fix_3') {
-                $width = '1268';
-                $height = '890';
-            } elseif ($data['type'] == 'fix_4') {
-                $width = '890';
-                $height = '890';
-            }
+            $banner->status = 1;
 
             if ($request->hasFile('image')) {
                 $image_tmp = $request->file('image');
