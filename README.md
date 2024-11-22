@@ -25,6 +25,8 @@ This Website is made out with laravel plateform and it's ecommerce website with 
 
 ## Frontend
 
+-   Home
+
 ## Admin Template
 
 [Template](https://adminlte.io/)
