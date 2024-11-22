@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CmsController;
 use App\Http\Controllers\Admin\CategoryController;
@@ -59,5 +60,10 @@ Route::prefix('/admin')->namespace('App\Http\Controllers\Admin')->group(function
         Route::match(['get', 'post'], 'add-edit-brand/{id?}', [BrandController::class, 'addEditBrand']);
         Route::get('delete-brand-image/{id}', [BrandController::class, 'deleteBrandImage']);
         Route::get('delete-brand-logo/{id}', [BrandController::class, 'deleteBrandLogo']);
+
+        //banners
+        Route::get('banners', [BannerController::class, 'banners']);
+        Route::post('update-banner-status', [BannerController::class, 'updateBannerStatus']);
+        Route::get('delete-banner/{id}', [BannerController::class, 'deleteBanner']);
     });
 });

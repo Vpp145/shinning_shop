@@ -245,4 +245,32 @@ $(document).ready(function () {
             },
         });
     });
+
+    //update banner status
+    $(document).on("click", ".updateBannerStatus", function () {
+        var status = $(this).children("i").attr("status");
+        var banner_id = $(this).attr("banner_id");
+        $.ajax({
+            headers: {
+                "X-CSRF-TOKEN": $('meta[name="csrf-token"]').attr("content"),
+            },
+            type: "post",
+            url: "/admin/update-banner-status",
+            data: { status: status, banner_id: banner_id },
+            success: function (resp) {
+                if (resp["status"] == 0) {
+                    $("#banner-" + banner_id).html(
+                        "<i class='fas fa-toggle-off' style='color:grey' status='Inactive'></i>"
+                    );
+                } else if (resp["status"] == 1) {
+                    $("#banner-" + banner_id).html(
+                        "<i class='fas fa-toggle-on' style='color:#3f6ed3' status='Active'></i>"
+                    );
+                }
+            },
+            error: function (err) {
+                console.error("error", err);
+            },
+        });
+    });
 });

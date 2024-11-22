@@ -140,6 +140,17 @@
                         <p>Brands</p>
                     </a>
                 </li>
+                @if (Session::get('page') == 'banners')
+                    @php $active = 'active' @endphp
+                @else
+                    @php $active = '' @endphp
+                @endif
+                <li class="nav-item">
+                    <a href="{{ url('admin/banners') }}" class="nav-link {{ $active }}">
+                        <i class="fas fa-sliders-h nav-icon"></i>
+                        <p>Banners</p>
+                    </a>
+                </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
