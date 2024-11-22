@@ -661,171 +661,12 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-12">
-                            <div class="load-more">
-
-                                <button class="btn btn--e-brand" type="button">Load More</button>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
             <!--====== End - Section Content ======-->
         </div>
         <!--====== End - Section 2 ======-->
-
-
-        <!--====== Section 3 ======-->
-        <div class="u-s-p-b-60">
-
-            <!--====== Section Intro ======-->
-            <div class="section__intro u-s-m-b-46">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="section__text-wrap">
-                                <h1 class="section__heading u-c-secondary u-s-m-b-12">DEAL OF THE DAY</h1>
-
-                                <span class="section__span u-c-silver">BUY DEAL OF THE DAY, HURRY UP! THESE NEW
-                                    PRODUCTS WILL EXPIRE SOON.</span>
-
-                                <span class="section__span u-c-silver">ADD THESE ON YOUR CART.</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--====== End - Section Intro ======-->
-
-
-            <!--====== Section Content ======-->
-            <div class="section__content">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-6 col-md-6 u-s-m-b-30">
-                            <div class="product-o product-o--radius product-o--hover-off u-h-100">
-                                <div class="product-o__wrap">
-
-                                    <a class="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
-
-                                        <img class="aspect__img" src="images/product/electronic/product11.jpg"
-                                            alt=""></a>
-                                    <div class="product-o__special-count-wrap">
-                                        <div class="countdown countdown--style-special" data-countdown="2020/05/01"></div>
-                                    </div>
-                                    <div class="product-o__action-wrap">
-                                        <ul class="product-o__action-list">
-                                            <li>
-
-                                                <a data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip"
-                                                    data-placement="top" title="Quick View"><i
-                                                        class="fas fa-search-plus"></i></a>
-                                            </li>
-                                            <li>
-
-                                                <a data-modal="modal" data-modal-id="#add-to-cart" data-tooltip="tooltip"
-                                                    data-placement="top" title="Add to Cart"><i
-                                                        class="fas fa-plus-circle"></i></a>
-                                            </li>
-                                            <li>
-
-                                                <a href="signin.html" data-tooltip="tooltip" data-placement="top"
-                                                    title="Add to Wishlist"><i class="fas fa-heart"></i></a>
-                                            </li>
-                                            <li>
-
-                                                <a href="signin.html" data-tooltip="tooltip" data-placement="top"
-                                                    title="Email me When the price drops"><i
-                                                        class="fas fa-envelope"></i></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-
-                                <span class="product-o__category">
-
-                                    <a href="shop-side-version-2.html">Electronics</a></span>
-
-                                <span class="product-o__name">
-
-                                    <a href="product-detail.html">DJI Phantom Drone 4k</a></span>
-                                <div class="product-o__rating gl-rating-style"><i class="fas fa-star"></i><i
-                                        class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                        class="fas fa-star"></i>
-
-                                    <span class="product-o__review">(2)</span>
-                                </div>
-
-                                <span class="product-o__price">$125.00
-
-                                    <span class="product-o__discount">$160.00</span></span>
-                            </div>
-                        </div>
-                        <div class="col-lg-6 col-md-6 u-s-m-b-30">
-                            <div class="product-o product-o--radius product-o--hover-off u-h-100">
-                                <div class="product-o__wrap">
-
-                                    <a class="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
-
-                                        <img class="aspect__img" src="images/product/electronic/product12.jpg"
-                                            alt=""></a>
-                                    <div class="product-o__special-count-wrap">
-                                        <div class="countdown countdown--style-special" data-countdown="2020/05/01"></div>
-                                    </div>
-                                    <div class="product-o__action-wrap">
-                                        <ul class="product-o__action-list">
-                                            <li>
-
-                                                <a data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip"
-                                                    data-placement="top" title="Quick View"><i
-                                                        class="fas fa-search-plus"></i></a>
-                                            </li>
-                                            <li>
-
-                                                <a data-modal="modal" data-modal-id="#add-to-cart" data-tooltip="tooltip"
-                                                    data-placement="top" title="Add to Cart"><i
-                                                        class="fas fa-plus-circle"></i></a>
-                                            </li>
-                                            <li>
-
-                                                <a href="signin.html" data-tooltip="tooltip" data-placement="top"
-                                                    title="Add to Wishlist"><i class="fas fa-heart"></i></a>
-                                            </li>
-                                            <li>
-
-                                                <a href="signin.html" data-tooltip="tooltip" data-placement="top"
-                                                    title="Email me When the price drops"><i
-                                                        class="fas fa-envelope"></i></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-
-                                <span class="product-o__category">
-
-                                    <a href="shop-side-version-2.html">Electronics</a></span>
-
-                                <span class="product-o__name">
-
-                                    <a href="product-detail.html">DJI Phantom Drone 2k</a></span>
-                                <div class="product-o__rating gl-rating-style"><i class="fas fa-star"></i><i
-                                        class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                        class="fas fa-star"></i>
-
-                                    <span class="product-o__review">(2)</span>
-                                </div>
-
-                                <span class="product-o__price">$125.00
-
-                                    <span class="product-o__discount">$160.00</span></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--====== End - Section Content ======-->
-        </div>
-        <!--====== End - Section 3 ======-->
 
 
         <!--====== Section 4 ======-->
@@ -1204,46 +1045,6 @@
         <!--====== End - Section 4 ======-->
 
 
-        <!--====== Section 5 ======-->
-        <div class="banner-bg">
-
-            <!--====== Section Content ======-->
-            <div class="section__content">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="banner-bg__countdown">
-                                <div class="countdown countdown--style-banner" data-countdown="2020/05/01"></div>
-                            </div>
-                            <div class="banner-bg__wrap">
-                                <div class="banner-bg__text-1">
-
-                                    <span class="u-c-white">Global</span>
-
-                                    <span class="u-c-secondary">Offers</span>
-                                </div>
-                                <div class="banner-bg__text-2">
-
-                                    <span class="u-c-secondary">Official Launch</span>
-
-                                    <span class="u-c-white">Don't Miss!</span>
-                                </div>
-
-                                <span class="banner-bg__text-block banner-bg__text-3 u-c-secondary">Enjoy Free
-                                    Shipping when you buy 2 items and above!</span>
-
-                                <a class="banner-bg__shop-now btn--e-secondary" href="shop-side-version-2.html">Shop
-                                    Now</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--====== End - Section Content ======-->
-        </div>
-        <!--====== End - Section 5 ======-->
-
-
         <!--====== Section 6 ======-->
         <div class="u-s-p-y-60">
 
@@ -1398,8 +1199,8 @@
                                             </li>
                                             <li>
 
-                                                <a data-modal="modal" data-modal-id="#add-to-cart"
-                                                    data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i
+                                                <a data-modal="modal" data-modal-id="#add-to-cart" data-tooltip="tooltip"
+                                                    data-placement="top" title="Add to Cart"><i
                                                         class="fas fa-plus-circle"></i></a>
                                             </li>
                                             <li>
@@ -1425,8 +1226,8 @@
 
                                     <a href="product-detail.html">Tablet 13inch Screen Ram 16GB</a></span>
                                 <div class="product-o__rating gl-rating-style"><i class="fas fa-star"></i><i
-                                        class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                        class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                                        class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                        class="fas fa-star-half-alt"></i>
 
                                     <span class="product-o__review">(23)</span>
                                 </div>
@@ -1440,8 +1241,7 @@
                             <div class="product-o product-o--hover-on u-h-100">
                                 <div class="product-o__wrap">
 
-                                    <a class="aspect aspect--bg-grey aspect--square u-d-block"
-                                        href="product-detail.html">
+                                    <a class="aspect aspect--bg-grey aspect--square u-d-block" href="product-detail.html">
 
                                         <img class="aspect__img" src="images/product/electronic/product22.jpg"
                                             alt=""></a>
@@ -1449,14 +1249,14 @@
                                         <ul class="product-o__action-list">
                                             <li>
 
-                                                <a data-modal="modal" data-modal-id="#quick-look"
-                                                    data-tooltip="tooltip" data-placement="top" title="Quick View"><i
+                                                <a data-modal="modal" data-modal-id="#quick-look" data-tooltip="tooltip"
+                                                    data-placement="top" title="Quick View"><i
                                                         class="fas fa-search-plus"></i></a>
                                             </li>
                                             <li>
 
-                                                <a data-modal="modal" data-modal-id="#add-to-cart"
-                                                    data-tooltip="tooltip" data-placement="top" title="Add to Cart"><i
+                                                <a data-modal="modal" data-modal-id="#add-to-cart" data-tooltip="tooltip"
+                                                    data-placement="top" title="Add to Cart"><i
                                                         class="fas fa-plus-circle"></i></a>
                                             </li>
                                             <li>
@@ -1482,8 +1282,8 @@
 
                                     <a href="product-detail.html">Tablet 12inch Screen Ram 16GB</a></span>
                                 <div class="product-o__rating gl-rating-style"><i class="fas fa-star"></i><i
-                                        class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                        class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                                        class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                        class="fas fa-star-half-alt"></i>
 
                                     <span class="product-o__review">(23)</span>
                                 </div>
@@ -1499,382 +1299,6 @@
             <!--====== End - Section Content ======-->
         </div>
         <!--====== End - Section 6 ======-->
-
-
-        <!--====== Section 7 ======-->
-        <div class="u-s-p-b-60">
-
-            <!--====== Section Content ======-->
-            <div class="section__content">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-4 col-md-4 col-sm-6 u-s-m-b-30">
-
-                            <a class="promotion" href="shop-side-version-2.html">
-                                <div class="aspect aspect--bg-grey aspect--square">
-
-                                    <img class="aspect__img promotion__img" src="images/promo/promo-img-1.jpg"
-                                        alt="">
-                                </div>
-                                <div class="promotion__content">
-                                    <div class="promotion__text-wrap">
-                                        <div class="promotion__text-1">
-
-                                            <span class="u-c-secondary">ACCESSORIES FOR YOUR EVERYDAY</span>
-                                        </div>
-                                        <div class="promotion__text-2">
-
-                                            <span class="u-c-secondary">GET IN</span>
-
-                                            <span class="u-c-brand">TOUCH</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-6 u-s-m-b-30">
-
-                            <a class="promotion" href="shop-side-version-2.html">
-                                <div class="aspect aspect--bg-grey aspect--square">
-
-                                    <img class="aspect__img promotion__img" src="images/promo/promo-img-2.jpg"
-                                        alt="">
-                                </div>
-                                <div class="promotion__content">
-                                    <div class="promotion__text-wrap">
-                                        <div class="promotion__text-1">
-
-                                            <span class="u-c-secondary">SMARTPHONE</span>
-
-                                            <span class="u-c-brand">2019</span>
-                                        </div>
-                                        <div class="promotion__text-2">
-
-                                            <span class="u-c-secondary">NEW ARRIVALS</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-lg-4 col-md-4 col-sm-6 u-s-m-b-30">
-
-                            <a class="promotion" href="shop-side-version-2.html">
-                                <div class="aspect aspect--bg-grey aspect--square">
-
-                                    <img class="aspect__img promotion__img" src="images/promo/promo-img-3.jpg"
-                                        alt="">
-                                </div>
-                                <div class="promotion__content">
-                                    <div class="promotion__text-wrap">
-                                        <div class="promotion__text-1">
-
-                                            <span class="u-c-secondary">DSLR FOR NEW GENERATION</span>
-                                        </div>
-                                        <div class="promotion__text-2">
-
-                                            <span class="u-c-brand">GET UP TO 10% OFF</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--====== End - Section Content ======-->
-        </div>
-        <!--====== End - Section 7 ======-->
-
-
-        <!--====== Section 8 ======-->
-        <div class="u-s-p-b-60">
-
-            <!--====== Section Content ======-->
-            <div class="section__content">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-4 col-md-6 col-sm-6 u-s-m-b-30">
-                            <div class="column-product">
-
-                                <span class="column-product__title u-c-secondary u-s-m-b-25">SPECIAL
-                                    PRODUCTS</span>
-                                <ul class="column-product__list">
-                                    <li class="column-product__item">
-                                        <div class="product-l">
-                                            <div class="product-l__img-wrap">
-
-                                                <a class="aspect aspect--bg-grey aspect--square u-d-block product-l__link"
-                                                    href="product-detail.html">
-
-                                                    <img class="aspect__img"
-                                                        src="images/product/electronic/product23.jpg"
-                                                        alt=""></a>
-                                            </div>
-                                            <div class="product-l__info-wrap">
-
-                                                <span class="product-l__category">
-
-                                                    <a href="shop-side-version-2.html">Electronics</a></span>
-
-                                                <span class="product-l__name">
-
-                                                    <a href="product-detail.html">Razor Gear 15 Ram
-                                                        16GB</a></span>
-
-                                                <span class="product-l__price">$125.00</span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="column-product__item">
-                                        <div class="product-l">
-                                            <div class="product-l__img-wrap">
-
-                                                <a class="aspect aspect--bg-grey aspect--square u-d-block product-l__link"
-                                                    href="product-detail.html">
-
-                                                    <img class="aspect__img"
-                                                        src="images/product/electronic/product24.jpg"
-                                                        alt=""></a>
-                                            </div>
-                                            <div class="product-l__info-wrap">
-
-                                                <span class="product-l__category">
-
-                                                    <a href="shop-side-version-2.html">Electronics</a></span>
-
-                                                <span class="product-l__name">
-
-                                                    <a href="product-detail.html">Razor Gear 13 Ram
-                                                        16GB</a></span>
-
-                                                <span class="product-l__price">$125.00</span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="column-product__item">
-                                        <div class="product-l">
-                                            <div class="product-l__img-wrap">
-
-                                                <a class="aspect aspect--bg-grey aspect--square u-d-block product-l__link"
-                                                    href="product-detail.html">
-
-                                                    <img class="aspect__img"
-                                                        src="images/product/electronic/product25.jpg"
-                                                        alt=""></a>
-                                            </div>
-                                            <div class="product-l__info-wrap">
-
-                                                <span class="product-l__category">
-
-                                                    <a href="shop-side-version-2.html">Electronics</a></span>
-
-                                                <span class="product-l__name">
-
-                                                    <a href="product-detail.html">Razor Gear 15 Ram 8GB</a></span>
-
-                                                <span class="product-l__price">$125.00</span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-6 u-s-m-b-30">
-                            <div class="column-product">
-
-                                <span class="column-product__title u-c-secondary u-s-m-b-25">WEEKLY
-                                    PRODUCTS</span>
-                                <ul class="column-product__list">
-                                    <li class="column-product__item">
-                                        <div class="product-l">
-                                            <div class="product-l__img-wrap">
-
-                                                <a class="aspect aspect--bg-grey aspect--square u-d-block product-l__link"
-                                                    href="product-detail.html">
-
-                                                    <img class="aspect__img"
-                                                        src="images/product/electronic/product26.jpg"
-                                                        alt=""></a>
-                                            </div>
-                                            <div class="product-l__info-wrap">
-
-                                                <span class="product-l__category">
-
-                                                    <a href="shop-side-version-2.html">Electronics</a></span>
-
-                                                <span class="product-l__name">
-
-                                                    <a href="product-detail.html">Razor Gear 10 Ram
-                                                        16GB</a></span>
-
-                                                <span class="product-l__price">$125.00
-
-                                                    <span class="product-l__discount">$160</span></span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="column-product__item">
-                                        <div class="product-l">
-                                            <div class="product-l__img-wrap">
-
-                                                <a class="aspect aspect--bg-grey aspect--square u-d-block product-l__link"
-                                                    href="product-detail.html">
-
-                                                    <img class="aspect__img"
-                                                        src="images/product/electronic/product27.jpg"
-                                                        alt=""></a>
-                                            </div>
-                                            <div class="product-l__info-wrap">
-
-                                                <span class="product-l__category">
-
-                                                    <a href="shop-side-version-2.html">Electronics</a></span>
-
-                                                <span class="product-l__name">
-
-                                                    <a href="product-detail.html">Razor Gear 15 Ram 8GB</a></span>
-
-                                                <span class="product-l__price">$125.00
-
-                                                    <span class="product-l__discount">$160</span></span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="column-product__item">
-                                        <div class="product-l">
-                                            <div class="product-l__img-wrap">
-
-                                                <a class="aspect aspect--bg-grey aspect--square u-d-block product-l__link"
-                                                    href="product-detail.html">
-
-                                                    <img class="aspect__img"
-                                                        src="images/product/electronic/product28.jpg"
-                                                        alt=""></a>
-                                            </div>
-                                            <div class="product-l__info-wrap">
-
-                                                <span class="product-l__category">
-
-                                                    <a href="shop-side-version-2.html">Electronics</a></span>
-
-                                                <span class="product-l__name">
-
-                                                    <a href="product-detail.html">Razor Gear 15 Ultra Ram
-                                                        16GB</a></span>
-
-                                                <span class="product-l__price">$125.00
-
-                                                    <span class="product-l__discount">$160</span></span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-sm-6 u-s-m-b-30">
-                            <div class="column-product">
-
-                                <span class="column-product__title u-c-secondary u-s-m-b-25">FLASH PRODUCTS</span>
-                                <ul class="column-product__list">
-                                    <li class="column-product__item">
-                                        <div class="product-l">
-                                            <div class="product-l__img-wrap">
-
-                                                <a class="aspect aspect--bg-grey aspect--square u-d-block product-l__link"
-                                                    href="product-detail.html">
-
-                                                    <img class="aspect__img"
-                                                        src="images/product/electronic/product29.jpg"
-                                                        alt=""></a>
-                                            </div>
-                                            <div class="product-l__info-wrap">
-                                                <div class="product-l__rating gl-rating-style"><i
-                                                        class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                                        class="fas fa-star"></i><i class="far fa-star"></i><i
-                                                        class="far fa-star"></i></div>
-
-                                                <span class="product-l__category">
-
-                                                    <a href="shop-side-version-2.html">Electronics</a></span>
-
-                                                <span class="product-l__name">
-
-                                                    <a href="product-detail.html">Razor Gear 20 Ultra Ram
-                                                        16GB</a></span>
-
-                                                <span class="product-l__price">$125.00</span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="column-product__item">
-                                        <div class="product-l">
-                                            <div class="product-l__img-wrap">
-
-                                                <a class="aspect aspect--bg-grey aspect--square u-d-block product-l__link"
-                                                    href="product-detail.html">
-
-                                                    <img class="aspect__img"
-                                                        src="images/product/electronic/product30.jpg"
-                                                        alt=""></a>
-                                            </div>
-                                            <div class="product-l__info-wrap">
-                                                <div class="product-l__rating gl-rating-style"><i
-                                                        class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                                        class="fas fa-star"></i><i class="far fa-star"></i><i
-                                                        class="far fa-star"></i></div>
-
-                                                <span class="product-l__category">
-
-                                                    <a href="shop-side-version-2.html">Electronics</a></span>
-
-                                                <span class="product-l__name">
-
-                                                    <a href="product-detail.html">Razor Gear 11 Ultra Ram
-                                                        16GB</a></span>
-
-                                                <span class="product-l__price">$125.00</span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="column-product__item">
-                                        <div class="product-l">
-                                            <div class="product-l__img-wrap">
-
-                                                <a class="aspect aspect--bg-grey aspect--square u-d-block product-l__link"
-                                                    href="product-detail.html">
-
-                                                    <img class="aspect__img"
-                                                        src="images/product/electronic/product31.jpg"
-                                                        alt=""></a>
-                                            </div>
-                                            <div class="product-l__info-wrap">
-                                                <div class="product-l__rating gl-rating-style"><i
-                                                        class="fas fa-star"></i><i class="fas fa-star"></i><i
-                                                        class="fas fa-star"></i><i class="far fa-star"></i><i
-                                                        class="far fa-star"></i></div>
-
-                                                <span class="product-l__category">
-
-                                                    <a href="shop-side-version-2.html">Electronics</a></span>
-
-                                                <span class="product-l__name">
-
-                                                    <a href="product-detail.html">Razor Gear 10 Ultra Ram
-                                                        16GB</a></span>
-
-                                                <span class="product-l__price">$125.00</span>
-                                            </div>
-                                        </div>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--====== End - Section Content ======-->
-        </div>
-        <!--====== End - Section 8 ======-->
 
 
         <!--====== Section 9 ======-->
@@ -1959,8 +1383,7 @@
 
                                     <!--====== Image Code ======-->
 
-                                    <a class="aspect aspect--bg-grey aspect--1366-768 u-d-block"
-                                        href="blog-detail.html">
+                                    <a class="aspect aspect--bg-grey aspect--1366-768 u-d-block" href="blog-detail.html">
 
                                         <img class="aspect__img" src="images/blog/post-2.jpg" alt=""></a>
                                     <!--====== End - Image Code ======-->
