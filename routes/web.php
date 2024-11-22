@@ -2,13 +2,15 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\BannerController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CmsController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
 
 Route::get('/', function () {
-    return view('welcome');
+    // return view('welcome');
+    return redirect('/admin/login');
 });
 
 //Admin
@@ -59,5 +61,11 @@ Route::prefix('/admin')->namespace('App\Http\Controllers\Admin')->group(function
         Route::match(['get', 'post'], 'add-edit-brand/{id?}', [BrandController::class, 'addEditBrand']);
         Route::get('delete-brand-image/{id}', [BrandController::class, 'deleteBrandImage']);
         Route::get('delete-brand-logo/{id}', [BrandController::class, 'deleteBrandLogo']);
+
+        //banners
+        Route::get('banners', [BannerController::class, 'banners']);
+        Route::post('update-banner-status', [BannerController::class, 'updateBannerStatus']);
+        Route::get('delete-banner/{id}', [BannerController::class, 'deleteBanner']);
+        Route::match(['get', 'post'], 'add-edit-banner/{id?}', [BannerController::class, 'addEditBanner']);
     });
 });
