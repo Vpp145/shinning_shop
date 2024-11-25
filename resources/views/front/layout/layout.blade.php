@@ -9,16 +9,12 @@
     <meta name="author" content="">
     <link href="images/favicon.png" rel="shortcut icon">
     <title>Ludus - Electronics, Apparel, Computers, Books, DVDs & more</title>
-
     <!--====== Google Font ======-->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800" rel="stylesheet">
-
     <!--====== Vendor Css ======-->
     <link rel="stylesheet" href="{{ asset('front/css/vendor.css') }}">
-
     <!--====== Utility-Spacing ======-->
     <link rel="stylesheet" href="{{ asset('front/css/utility.css') }}">
-
     <!--====== App ======-->
     <link rel="stylesheet" href="{{ asset('front/css/app.css') }}">
 </head>
@@ -26,14 +22,12 @@
 <body class="config">
     <div class="preloader is-active">
         <div class="preloader__wrap">
-
             <img class="preloader__img" src="images/preloader.png" alt="">
         </div>
     </div>
 
     <!--====== Main App ======-->
     <div id="app">
-
         @include('front.layout.header')
 
         @yield('content')
@@ -42,7 +36,6 @@
         @include('front.layout.modals')
     </div>
     <!--====== End - Main App ======-->
-
 
     <!--====== Google Analytics: change UA-XXXXX-Y to be your site's ID ======-->
     <script>
@@ -55,16 +48,14 @@
         ga('send', 'pageview')
     </script>
     <script src="https://www.google-analytics.com/analytics.js" async defer></script>
-
     <!--====== Vendor Js ======-->
     <script src="{{ asset('front/js/vendor.js') }}"></script>
-
     <!--====== jQuery Shopnav plugin ======-->
     <script src="{{ asset('front/js/jquery.shopnav.js') }}"></script>
-
     <!--====== App ======-->
     <script src="{{ asset('front/js/app.js') }}"></script>
-
+    <!--====== Custom ======-->
+    <script src="{{ asset('front/js/custom.js') }}"></script>
     <!--====== Noscript ======-->
     <noscript>
         <div class="app-setting">
