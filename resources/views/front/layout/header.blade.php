@@ -4,7 +4,8 @@
         <div class="container">
             <div class="primary-nav">
                 <a class="main-logo" href="/">
-                    <img src="{{ asset('front/images/logo/logo-1.png') }}" alt="">
+                    <img src="{{ asset('front/images/logo/s_logo_2.png') }}" alt="" class="img-fluid" width="180"
+                        height="60">
                 </a>
                 <form class="main-form">
                     <label for="main-search"></label>
@@ -153,7 +154,8 @@
                                                 </li>
                                                 <li>
 
-                                                    <a href="index.html"><i class="fas fa-football-ball u-s-m-r-6"></i>
+                                                    <a href="index.html"><i
+                                                            class="fas fa-football-ball u-s-m-r-6"></i>
 
                                                         <span>Sports & Game</span></a>
 

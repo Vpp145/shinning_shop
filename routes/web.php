@@ -9,10 +9,6 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Front\IndexController;
 
-Route::get('/', function () {
-    // return view('welcome');
-    return redirect('/admin/login');
-});
 
 //Admin
 Route::prefix('/admin')->namespace('App\Http\Controllers\Admin')->group(function () {
