@@ -70,17 +70,7 @@
                                             <option value="slider" @if (!empty($banner['type']) && $banner['type'] == 'slider') selected @endif>
                                                 Slider
                                             </option>
-                                            <option value="fix_1" @if (!empty($banner['type']) && $banner['type'] == 'fix_1') selected @endif>
-                                                Fix 1
-                                            </option>
-                                            <option value="fix_2" @if (!empty($banner['type']) && $banner['type'] == 'fix_2') selected @endif>
-                                                Fix 2
-                                            </option>
-                                            <option value="fix_3" @if (!empty($banner['type']) && $banner['type'] == 'fix_3') selected @endif>
-                                                Fix 3
-                                            </option>
-                                            <option value="fix_4" @if (!empty($banner['type']) && $banner['type'] == 'fix_4') selected @endif>
-                                                Fix 4
+                                            <option value="fix" @if (!empty($banner['type']) && $banner['type'] == 'fix') selected @endif>Fix
                                             </option>
                                         </select>
                                         </select>

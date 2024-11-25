@@ -7,11 +7,8 @@ use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CmsController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Front\IndexController;
 
-Route::get('/', function () {
-    // return view('welcome');
-    return redirect('/admin/login');
-});
 
 //Admin
 Route::prefix('/admin')->namespace('App\Http\Controllers\Admin')->group(function () {
@@ -68,4 +65,9 @@ Route::prefix('/admin')->namespace('App\Http\Controllers\Admin')->group(function
         Route::get('delete-banner/{id}', [BannerController::class, 'deleteBanner']);
         Route::match(['get', 'post'], 'add-edit-banner/{id?}', [BannerController::class, 'addEditBanner']);
     });
+});
+
+//Front
+Route::namespace('App\Http\Controllers\Front')->group(function () {
+    Route::get('/', [IndexController::class, 'index']);
 });
