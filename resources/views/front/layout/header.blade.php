@@ -91,10 +91,10 @@ $categories = Category::getCategories();
                                 </ul>
                             </li>
                             <li data-tooltip="tooltip" data-placement="left" title="Contact">
-                                <a href="tel:+0900901904"><i class="fas fa-phone-volume"></i></a>
+                                <a href="tel:+916354046815"><i class="fas fa-phone-volume"></i></a>
                             </li>
                             <li data-tooltip="tooltip" data-placement="left" title="Mail">
-                                <a href="mailto:contact@domain.com"><i class="far fa-envelope"></i></a>
+                                <a href="mailto:vyomcodage@gmail.com"><i class="far fa-envelope"></i></a>
                             </li>
                         </ul>
                     </div>
@@ -149,124 +149,6 @@ $categories = Category::getCategories();
                                     @endif
                                 </li>
                             @endforeach
-                            <li class="has-dropdown">
-
-                                <a>PAGES<i class="fas fa-angle-down u-s-m-l-6"></i></a>
-
-                                <!--====== Dropdown ======-->
-
-                                <span class="js-menu-toggle"></span>
-                                <ul style="width:170px">
-                                    <li class="has-dropdown has-dropdown--ul-left-100">
-
-                                        <a>Home<i class="fas fa-angle-down i-state-right u-s-m-l-6"></i></a>
-                                    </li>
-                                    <li class="has-dropdown has-dropdown--ul-left-100">
-
-                                        <a>Product Details<i class="fas fa-angle-down i-state-right u-s-m-l-6"></i></a>
-
-                                        <!--====== Dropdown ======-->
-
-                                        <span class="js-menu-toggle"></span>
-                                        <ul style="width:200px">
-                                            <li>
-
-                                                <a href="product-detail.html">Product Details</a>
-                                            </li>
-                                            <li>
-
-                                                <a href="product-detail-variable.html">Product Details Variable</a>
-                                            </li>
-                                            <li>
-
-                                                <a href="product-detail-affiliate.html">Product Details Affiliate</a>
-                                            </li>
-                                        </ul>
-                                        <!--====== End - Dropdown ======-->
-                                    </li>
-                                    <li class="has-dropdown has-dropdown--ul-left-100">
-
-                                        <a>Shop Grid Layout<i
-                                                class="fas fa-angle-down i-state-right u-s-m-l-6"></i></a>
-
-                                        <!--====== Dropdown ======-->
-
-                                        <span class="js-menu-toggle"></span>
-                                        <ul style="width:200px">
-                                            <li>
-
-                                                <a href="shop-grid-left.html">Shop Grid Left Sidebar</a>
-                                            </li>
-                                            <li>
-
-                                                <a href="shop-grid-right.html">Shop Grid Right Sidebar</a>
-                                            </li>
-                                            <li>
-
-                                                <a href="shop-grid-full.html">Shop Grid Full Width</a>
-                                            </li>
-                                            <li>
-
-                                                <a href="shop-side-version-2.html">Shop Side Version 2</a>
-                                            </li>
-                                        </ul>
-                                        <!--====== End - Dropdown ======-->
-                                    </li>
-                                    <li class="has-dropdown has-dropdown--ul-left-100">
-
-                                        <a>Shop List Layout<i
-                                                class="fas fa-angle-down i-state-right u-s-m-l-6"></i></a>
-
-                                        <!--====== Dropdown ======-->
-
-                                        <span class="js-menu-toggle"></span>
-                                        <ul style="width:200px">
-                                            <li>
-
-                                                <a href="shop-list-left.html">Shop List Left Sidebar</a>
-                                            </li>
-                                            <li>
-
-                                                <a href="shop-list-right.html">Shop List Right Sidebar</a>
-                                            </li>
-                                            <li>
-
-                                                <a href="shop-list-full.html">Shop List Full Width</a>
-                                            </li>
-                                        </ul>
-                                        <!--====== End - Dropdown ======-->
-                                    </li>
-                                    <li>
-
-                                        <a href="cart.html">Cart</a>
-                                    </li>
-                                    <li>
-
-                                        <a href="wishlist.html">Wishlist</a>
-                                    </li>
-                                    <li>
-
-                                        <a href="checkout.html">Checkout</a>
-                                    </li>
-                                    <li>
-
-                                        <a href="faq.html">FAQ</a>
-                                    </li>
-                                    <li>
-
-                                        <a href="about.html">About us</a>
-                                    </li>
-                                    <li>
-
-                                        <a href="contact.html">Contact</a>
-                                    </li>
-                                    <li>
-
-                                        <a href="404.html">404</a>
-                                    </li>
-                                </ul>
-                                <!--====== End - Dropdown ======-->
-                            </li>
                         </ul>
                         <!--====== End - List ======-->
                     </div>
