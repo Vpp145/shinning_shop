@@ -2,7 +2,6 @@
 @section('content')
     <!--====== App Content ======-->
     <div class="app-content">
-
         <!--====== Primary Slider ======-->
         <div class="s-skeleton s-skeleton--h-600 s-skeleton--bg-grey">
             <div class="owl-carousel primary-style-1" id="hero-slider">
@@ -28,7 +27,6 @@
         </div>
         <!--====== End - Primary Slider ======-->
 
-
         <!--====== Section 1 ======-->
         <div class="u-s-p-y-60">
             <!--====== Section Intro ======-->
@@ -38,7 +36,6 @@
                         <div class="col-lg-12">
                             <div class="section__text-wrap">
                                 <h1 class="section__heading u-c-secondary u-s-m-b-12">SHOP BY DEALS</h1>
-
                                 <span class="section__span u-c-silver">BROWSE FAVOURITE DEALS</span>
                             </div>
                         </div>
@@ -71,10 +68,8 @@
         </div>
         <!--====== End - Section 1 ======-->
 
-
         <!--====== Section 2 ======-->
         <div class="u-s-p-b-60">
-
             <!--====== Section Intro ======-->
             <div class="section__intro u-s-m-b-16">
                 <div class="container">
@@ -82,7 +77,6 @@
                         <div class="col-lg-12">
                             <div class="section__text-wrap">
                                 <h1 class="section__heading u-c-secondary u-s-m-b-12">TOP TRENDING</h1>
-
                                 <span class="section__span u-c-silver">CHOOSE CATEGORY</span>
                             </div>
                         </div>
@@ -90,7 +84,6 @@
                 </div>
             </div>
             <!--====== End - Section Intro ======-->
-
 
             <!--====== Section Content ======-->
             <div class="section__content">
@@ -668,383 +661,6 @@
         </div>
         <!--====== End - Section 2 ======-->
 
-
-        <!--====== Section 4 ======-->
-        <div class="u-s-p-b-60">
-
-            <!--====== Section Intro ======-->
-            <div class="section__intro u-s-m-b-46">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="section__text-wrap">
-                                <h1 class="section__heading u-c-secondary u-s-m-b-12">NEW ARRIVALS</h1>
-
-                                <span class="section__span u-c-silver">GET UP FOR NEW ARRIVALS</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--====== End - Section Intro ======-->
-
-
-            <!--====== Section Content ======-->
-            <div class="section__content">
-                <div class="container">
-                    <div class="slider-fouc">
-                        <div class="owl-carousel product-slider" data-item="4">
-                            <div class="u-s-m-b-30">
-                                <div class="product-o product-o--hover-on">
-                                    <div class="product-o__wrap">
-
-                                        <a class="aspect aspect--bg-grey aspect--square u-d-block"
-                                            href="product-detail.html">
-
-                                            <img class="aspect__img" src="images/product/electronic/product13.jpg"
-                                                alt=""></a>
-                                        <div class="product-o__action-wrap">
-                                            <ul class="product-o__action-list">
-                                                <li>
-
-                                                    <a data-modal="modal" data-modal-id="#quick-look"
-                                                        data-tooltip="tooltip" data-placement="top" title="Quick View"><i
-                                                            class="fas fa-search-plus"></i></a>
-                                                </li>
-                                                <li>
-
-                                                    <a data-modal="modal" data-modal-id="#add-to-cart"
-                                                        data-tooltip="tooltip" data-placement="top"
-                                                        title="Add to Cart"><i class="fas fa-plus-circle"></i></a>
-                                                </li>
-                                                <li>
-
-                                                    <a href="signin.html" data-tooltip="tooltip" data-placement="top"
-                                                        title="Add to Wishlist"><i class="fas fa-heart"></i></a>
-                                                </li>
-                                                <li>
-
-                                                    <a href="signin.html" data-tooltip="tooltip" data-placement="top"
-                                                        title="Email me When the price drops"><i
-                                                            class="fas fa-envelope"></i></a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-
-                                    <span class="product-o__category">
-
-                                        <a href="shop-side-version-2.html">Electronics</a></span>
-
-                                    <span class="product-o__name">
-
-                                        <a href="product-detail.html">Nikon DSLR 4K Camera</a></span>
-                                    <div class="product-o__rating gl-rating-style"><i class="far fa-star"></i><i
-                                            class="far fa-star"></i><i class="far fa-star"></i><i
-                                            class="far fa-star"></i><i class="far fa-star"></i>
-
-                                        <span class="product-o__review">(0)</span>
-                                    </div>
-
-                                    <span class="product-o__price">$125.00
-
-                                        <span class="product-o__discount">$160.00</span></span>
-                                </div>
-                            </div>
-                            <div class="u-s-m-b-30">
-                                <div class="product-o product-o--hover-on">
-                                    <div class="product-o__wrap">
-
-                                        <a class="aspect aspect--bg-grey aspect--square u-d-block"
-                                            href="product-detail.html">
-
-                                            <img class="aspect__img" src="images/product/electronic/product14.jpg"
-                                                alt=""></a>
-                                        <div class="product-o__action-wrap">
-                                            <ul class="product-o__action-list">
-                                                <li>
-
-                                                    <a data-modal="modal" data-modal-id="#quick-look"
-                                                        data-tooltip="tooltip" data-placement="top" title="Quick View"><i
-                                                            class="fas fa-search-plus"></i></a>
-                                                </li>
-                                                <li>
-
-                                                    <a data-modal="modal" data-modal-id="#add-to-cart"
-                                                        data-tooltip="tooltip" data-placement="top"
-                                                        title="Add to Cart"><i class="fas fa-plus-circle"></i></a>
-                                                </li>
-                                                <li>
-
-                                                    <a href="signin.html" data-tooltip="tooltip" data-placement="top"
-                                                        title="Add to Wishlist"><i class="fas fa-heart"></i></a>
-                                                </li>
-                                                <li>
-
-                                                    <a href="signin.html" data-tooltip="tooltip" data-placement="top"
-                                                        title="Email me When the price drops"><i
-                                                            class="fas fa-envelope"></i></a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-
-                                    <span class="product-o__category">
-
-                                        <a href="shop-side-version-2.html">Electronics</a></span>
-
-                                    <span class="product-o__name">
-
-                                        <a href="product-detail.html">Nikon DSLR 2K Camera</a></span>
-                                    <div class="product-o__rating gl-rating-style"><i class="far fa-star"></i><i
-                                            class="far fa-star"></i><i class="far fa-star"></i><i
-                                            class="far fa-star"></i><i class="far fa-star"></i>
-
-                                        <span class="product-o__review">(0)</span>
-                                    </div>
-
-                                    <span class="product-o__price">$125.00
-
-                                        <span class="product-o__discount">$160.00</span></span>
-                                </div>
-                            </div>
-                            <div class="u-s-m-b-30">
-                                <div class="product-o product-o--hover-on">
-                                    <div class="product-o__wrap">
-
-                                        <a class="aspect aspect--bg-grey aspect--square u-d-block"
-                                            href="product-detail.html">
-
-                                            <img class="aspect__img" src="images/product/electronic/product15.jpg"
-                                                alt=""></a>
-                                        <div class="product-o__action-wrap">
-                                            <ul class="product-o__action-list">
-                                                <li>
-
-                                                    <a data-modal="modal" data-modal-id="#quick-look"
-                                                        data-tooltip="tooltip" data-placement="top" title="Quick View"><i
-                                                            class="fas fa-search-plus"></i></a>
-                                                </li>
-                                                <li>
-
-                                                    <a data-modal="modal" data-modal-id="#add-to-cart"
-                                                        data-tooltip="tooltip" data-placement="top"
-                                                        title="Add to Cart"><i class="fas fa-plus-circle"></i></a>
-                                                </li>
-                                                <li>
-
-                                                    <a href="signin.html" data-tooltip="tooltip" data-placement="top"
-                                                        title="Add to Wishlist"><i class="fas fa-heart"></i></a>
-                                                </li>
-                                                <li>
-
-                                                    <a href="signin.html" data-tooltip="tooltip" data-placement="top"
-                                                        title="Email me When the price drops"><i
-                                                            class="fas fa-envelope"></i></a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-
-                                    <span class="product-o__category">
-
-                                        <a href="shop-side-version-2.html">Electronics</a></span>
-
-                                    <span class="product-o__name">
-
-                                        <a href="product-detail.html">Sony DSLR 4K Camera</a></span>
-                                    <div class="product-o__rating gl-rating-style"><i class="far fa-star"></i><i
-                                            class="far fa-star"></i><i class="far fa-star"></i><i
-                                            class="far fa-star"></i><i class="far fa-star"></i>
-
-                                        <span class="product-o__review">(0)</span>
-                                    </div>
-
-                                    <span class="product-o__price">$125.00
-
-                                        <span class="product-o__discount">$160.00</span></span>
-                                </div>
-                            </div>
-                            <div class="u-s-m-b-30">
-                                <div class="product-o product-o--hover-on">
-                                    <div class="product-o__wrap">
-
-                                        <a class="aspect aspect--bg-grey aspect--square u-d-block"
-                                            href="product-detail.html">
-
-                                            <img class="aspect__img" src="images/product/electronic/product16.jpg"
-                                                alt=""></a>
-                                        <div class="product-o__action-wrap">
-                                            <ul class="product-o__action-list">
-                                                <li>
-
-                                                    <a data-modal="modal" data-modal-id="#quick-look"
-                                                        data-tooltip="tooltip" data-placement="top" title="Quick View"><i
-                                                            class="fas fa-search-plus"></i></a>
-                                                </li>
-                                                <li>
-
-                                                    <a data-modal="modal" data-modal-id="#add-to-cart"
-                                                        data-tooltip="tooltip" data-placement="top"
-                                                        title="Add to Cart"><i class="fas fa-plus-circle"></i></a>
-                                                </li>
-                                                <li>
-
-                                                    <a href="signin.html" data-tooltip="tooltip" data-placement="top"
-                                                        title="Add to Wishlist"><i class="fas fa-heart"></i></a>
-                                                </li>
-                                                <li>
-
-                                                    <a href="signin.html" data-tooltip="tooltip" data-placement="top"
-                                                        title="Email me When the price drops"><i
-                                                            class="fas fa-envelope"></i></a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-
-                                    <span class="product-o__category">
-
-                                        <a href="shop-side-version-2.html">Electronics</a></span>
-
-                                    <span class="product-o__name">
-
-                                        <a href="product-detail.html">Sony DSLR 2K Camera</a></span>
-                                    <div class="product-o__rating gl-rating-style"><i class="far fa-star"></i><i
-                                            class="far fa-star"></i><i class="far fa-star"></i><i
-                                            class="far fa-star"></i><i class="far fa-star"></i>
-
-                                        <span class="product-o__review">(0)</span>
-                                    </div>
-
-                                    <span class="product-o__price">$125.00
-
-                                        <span class="product-o__discount">$160.00</span></span>
-                                </div>
-                            </div>
-                            <div class="u-s-m-b-30">
-                                <div class="product-o product-o--hover-on">
-                                    <div class="product-o__wrap">
-
-                                        <a class="aspect aspect--bg-grey aspect--square u-d-block"
-                                            href="product-detail.html">
-
-                                            <img class="aspect__img" src="images/product/electronic/product17.jpg"
-                                                alt=""></a>
-                                        <div class="product-o__action-wrap">
-                                            <ul class="product-o__action-list">
-                                                <li>
-
-                                                    <a data-modal="modal" data-modal-id="#quick-look"
-                                                        data-tooltip="tooltip" data-placement="top" title="Quick View"><i
-                                                            class="fas fa-search-plus"></i></a>
-                                                </li>
-                                                <li>
-
-                                                    <a data-modal="modal" data-modal-id="#add-to-cart"
-                                                        data-tooltip="tooltip" data-placement="top"
-                                                        title="Add to Cart"><i class="fas fa-plus-circle"></i></a>
-                                                </li>
-                                                <li>
-
-                                                    <a href="signin.html" data-tooltip="tooltip" data-placement="top"
-                                                        title="Add to Wishlist"><i class="fas fa-heart"></i></a>
-                                                </li>
-                                                <li>
-
-                                                    <a href="signin.html" data-tooltip="tooltip" data-placement="top"
-                                                        title="Email me When the price drops"><i
-                                                            class="fas fa-envelope"></i></a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-
-                                    <span class="product-o__category">
-
-                                        <a href="shop-side-version-2.html">Electronics</a></span>
-
-                                    <span class="product-o__name">
-
-                                        <a href="product-detail.html">Canon DSLR 4K Camera</a></span>
-                                    <div class="product-o__rating gl-rating-style"><i class="far fa-star"></i><i
-                                            class="far fa-star"></i><i class="far fa-star"></i><i
-                                            class="far fa-star"></i><i class="far fa-star"></i>
-
-                                        <span class="product-o__review">(0)</span>
-                                    </div>
-
-                                    <span class="product-o__price">$125.00
-
-                                        <span class="product-o__discount">$160.00</span></span>
-                                </div>
-                            </div>
-                            <div class="u-s-m-b-30">
-                                <div class="product-o product-o--hover-on">
-                                    <div class="product-o__wrap">
-
-                                        <a class="aspect aspect--bg-grey aspect--square u-d-block"
-                                            href="product-detail.html">
-
-                                            <img class="aspect__img" src="images/product/electronic/product18.jpg"
-                                                alt=""></a>
-                                        <div class="product-o__action-wrap">
-                                            <ul class="product-o__action-list">
-                                                <li>
-
-                                                    <a data-modal="modal" data-modal-id="#quick-look"
-                                                        data-tooltip="tooltip" data-placement="top" title="Quick View"><i
-                                                            class="fas fa-search-plus"></i></a>
-                                                </li>
-                                                <li>
-
-                                                    <a data-modal="modal" data-modal-id="#add-to-cart"
-                                                        data-tooltip="tooltip" data-placement="top"
-                                                        title="Add to Cart"><i class="fas fa-plus-circle"></i></a>
-                                                </li>
-                                                <li>
-
-                                                    <a href="signin.html" data-tooltip="tooltip" data-placement="top"
-                                                        title="Add to Wishlist"><i class="fas fa-heart"></i></a>
-                                                </li>
-                                                <li>
-
-                                                    <a href="signin.html" data-tooltip="tooltip" data-placement="top"
-                                                        title="Email me When the price drops"><i
-                                                            class="fas fa-envelope"></i></a>
-                                                </li>
-                                            </ul>
-                                        </div>
-                                    </div>
-
-                                    <span class="product-o__category">
-
-                                        <a href="shop-side-version-2.html">Electronics</a></span>
-
-                                    <span class="product-o__name">
-
-                                        <a href="product-detail.html">Canon DSLR 2K Camera</a></span>
-                                    <div class="product-o__rating gl-rating-style"><i class="far fa-star"></i><i
-                                            class="far fa-star"></i><i class="far fa-star"></i><i
-                                            class="far fa-star"></i><i class="far fa-star"></i>
-
-                                        <span class="product-o__review">(0)</span>
-                                    </div>
-
-                                    <span class="product-o__price">$125.00
-
-                                        <span class="product-o__discount">$160.00</span></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!--====== End - Section Content ======-->
-        </div>
-        <!--====== End - Section 4 ======-->
-
-
         <!--====== Section 6 ======-->
         <div class="u-s-p-y-60">
 
@@ -1446,8 +1062,7 @@
 
                                     <!--====== Image Code ======-->
 
-                                    <a class="aspect aspect--bg-grey aspect--1366-768 u-d-block"
-                                        href="blog-detail.html">
+                                    <a class="aspect aspect--bg-grey aspect--1366-768 u-d-block" href="blog-detail.html">
 
                                         <img class="aspect__img" src="images/blog/post-12.jpg" alt=""></a>
                                     <!--====== End - Image Code ======-->
@@ -1510,8 +1125,7 @@
 
                                     <!--====== Image Code ======-->
 
-                                    <a class="aspect aspect--bg-grey aspect--1366-768 u-d-block"
-                                        href="blog-detail.html">
+                                    <a class="aspect aspect--bg-grey aspect--1366-768 u-d-block" href="blog-detail.html">
 
                                         <img class="aspect__img" src="images/blog/post-5.jpg" alt=""></a>
                                     <!--====== End - Image Code ======-->
