@@ -30,16 +30,31 @@
                                         <span class="js-shop-grid-target">Grid</span>
                                         <span class="js-shop-list-target is-active">List</span>
                                     </div>
-                                    <form>
+                                    <form name="sortProducts" id="sortProducts">
+                                        <input type="hidden" name="url" value="{{ $url }}">
                                         <div class="tool-style__form-wrap">
-                                            <div class="u-s-m-b-8"><select class="select-box select-box--transparent-b-2">
+                                            <div class="u-s-m-b-8">
+                                                <select class="select-box select-box--transparent-b-2" name="sort"
+                                                    id="sort">
                                                     <option selected>Sort By: Newest Items</option>
-                                                    <option>Sort By: Latest Items</option>
-                                                    <option>Sort By: Best Selling</option>
-                                                    <option>Sort By: Best Rating</option>
-                                                    <option>Sort By: Lowest Price</option>
-                                                    <option>Sort By: Highest Price</option>
-                                                </select></div>
+                                                    <option value="product_latest"
+                                                        @if (isset($_GET['sort']) && $_GET['sort'] == 'product_latest') selected @endif>Sort By: Latest
+                                                        Items
+                                                    </option>
+                                                    <option value="best_selling"
+                                                        @if (isset($_GET['sort']) && $_GET['sort'] == 'best_selling') selected @endif>Sort By: Best
+                                                        Selling</option>
+                                                    <option value="best_rating"
+                                                        @if (isset($_GET['sort']) && $_GET['sort'] == 'best_rating') selected @endif>Sort By: Best
+                                                        Rating</option>
+                                                    <option value="lowest_price"
+                                                        @if (isset($_GET['sort']) && $_GET['sort'] == 'lowest_price') selected @endif>Sort By: Lowest
+                                                        Price</option>
+                                                    <option value="highest_price"
+                                                        @if (isset($_GET['sort']) && $_GET['sort'] == 'highest_price') selected @endif>Sort By: Highest
+                                                        Price</option>
+                                                </select>
+                                            </div>
                                         </div>
                                     </form>
                                 </div>
@@ -50,7 +65,11 @@
                                 </div>
                             </div>
                             <div class="u-s-p-y-60 pagination">
-                                {{ $category_products->links() }}
+                                @if (isset($_GET['sort']))
+                                    {{ $category_products->appends(['sort' => $_GET['sort']])->links() }}
+                                @else
+                                    {{ $category_products->links() }}
+                                @endif
                             </div>
                         </div>
                     </div>

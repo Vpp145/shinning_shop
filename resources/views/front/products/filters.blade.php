@@ -1,6 +1,5 @@
 <div class="shop-w-master">
     <h1 class="shop-w-master__heading u-s-m-b-30"><i class="fas fa-filter u-s-m-r-8"></i>
-
         <span>FILTERS</span>
     </h1>
     <div class="shop-w-master__sidebar sidebar--bg-snow">

@@ -175,7 +175,7 @@ $categories = Category::getCategories();
                         <ul class="ah-list ah-list--design1 ah-list--link-color-secondary">
                             <li>
 
-                                <a href="index.html"><i class="fas fa-home u-c-brand"></i></a>
+                                <a href="/"><i class="fas fa-home u-c-brand"></i></a>
                             </li>
                             <li>
 
