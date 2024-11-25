@@ -14,6 +14,11 @@ class Product extends Model
         return $this->belongsTo('App\Models\Category', 'category_id')->with('parentCategory');
     }
 
+    public function brand()
+    {
+        return $this->belongsTo('App\Models\Brand', 'brand_id', 'id');
+    }
+
     public static function productFilters()
     {
         $product_filters['fabric_array'] = array('cotton', 'polyester', 'wool');

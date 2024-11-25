@@ -395,6 +395,11 @@
                                         <input type="checkbox" name="is_featured" id="is_featured" value="yes"
                                             @if (!empty($product['is_featured']) && $product['is_featured'] == 'yes') checked @endif>
                                     </div>
+                                    <div class="form-group">
+                                        <label for="is_bestseller">Best Seller</label>
+                                        <input type="checkbox" name="is_bestseller" id="is_bestseller" value="yes"
+                                            @if (!empty($product['is_bestseller']) && $product['is_bestseller'] == 'yes') checked @endif>
+                                    </div>
                                 </div>
 
                                 <div class="card-footer">
