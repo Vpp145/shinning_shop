@@ -1,7 +1,13 @@
 @extends('front.layout.layout')
 @section('content')
+    <style>
+        .pagination nav li {
+            float: left;
+            width: 20px;
+            list-style-type: none;
+        }
+    </style>
     <div class="app-content">
-
         <!--====== Section 1 ======-->
         <div class="u-s-p-y-90">
             <div class="container">
@@ -13,34 +19,19 @@
                         <div class="shop-p">
                             <div class="shop-p__toolbar u-s-m-b-30">
                                 <div class="shop-p__meta-wrap u-s-m-b-60">
-
-                                    <span class="shop-p__meta-text-1">FOUND 18 RESULTS</span>
+                                    <span class="shop-p__meta-text-1">FOUND {{ count($category_products) }} RESULTS</span>
                                     <div class="shop-p__meta-text-2">
-
                                         <span>Related Searches:</span>
-
-                                        <a class="gl-tag btn--e-brand-shadow" href="#">men's clothing</a>
-
-                                        <a class="gl-tag btn--e-brand-shadow" href="#">mobiles & tablets</a>
-
-                                        <a class="gl-tag btn--e-brand-shadow" href="#">books & audible</a>
+                                        <?php echo $category_details['breadcrumbs']; ?>
                                     </div>
                                 </div>
                                 <div class="shop-p__tool-style">
                                     <div class="tool-style__group u-s-m-b-8">
-
                                         <span class="js-shop-grid-target">Grid</span>
-
                                         <span class="js-shop-list-target is-active">List</span>
                                     </div>
                                     <form>
                                         <div class="tool-style__form-wrap">
-                                            <div class="u-s-m-b-8"><select class="select-box select-box--transparent-b-2">
-                                                    <option>Show: 8</option>
-                                                    <option selected>Show: 12</option>
-                                                    <option>Show: 16</option>
-                                                    <option>Show: 28</option>
-                                                </select></div>
                                             <div class="u-s-m-b-8"><select class="select-box select-box--transparent-b-2">
                                                     <option selected>Sort By: Newest Items</option>
                                                     <option>Sort By: Latest Items</option>
@@ -58,32 +49,8 @@
                                     @include('front.products.ajax_products_lising')
                                 </div>
                             </div>
-                            <div class="u-s-p-y-60">
-
-                                <!--====== Pagination ======-->
-                                <ul class="shop-p__pagination">
-                                    <li class="is-active">
-
-                                        <a href="shop-list-left.html">1</a>
-                                    </li>
-                                    <li>
-
-                                        <a href="shop-list-left.html">2</a>
-                                    </li>
-                                    <li>
-
-                                        <a href="shop-list-left.html">3</a>
-                                    </li>
-                                    <li>
-
-                                        <a href="shop-list-left.html">4</a>
-                                    </li>
-                                    <li>
-
-                                        <a class="fas fa-angle-right" href="shop-list-left.html"></a>
-                                    </li>
-                                </ul>
-                                <!--====== End - Pagination ======-->
+                            <div class="u-s-p-y-60 pagination">
+                                {{ $category_products->links() }}
                             </div>
                         </div>
                     </div>
