@@ -67,6 +67,10 @@ class AdminController extends Controller
 
     public function updatePassword(Request $request)
     {
+        if (Auth::guard('admin')->user()->type != 'admin') {
+            $message = 'This feature is restricted to this Sub Admins';
+            return redirect('admin/dashboard')->with('error_message', $message);
+        }
         Session::put('page', 'update-password');
         if ($request->isMethod('post')) {
             $data = $request->input();
@@ -97,6 +101,10 @@ class AdminController extends Controller
 
     public function updateAdminDetails(Request $request)
     {
+        if (Auth::guard('admin')->user()->type != 'admin') {
+            $message = 'This feature is restricted to this Sub Admins';
+            return redirect('admin/dashboard')->with('error_message', $message);
+        }
         Session::put('page', 'update-admin-details');
         if ($request->isMethod('post')) {
             $data = $request->all();
@@ -134,6 +142,10 @@ class AdminController extends Controller
 
     public function subadmins()
     {
+        if (Auth::guard('admin')->user()->type != 'admin') {
+            $message = 'This feature is restricted to this Sub Admins';
+            return redirect('admin/dashboard')->with('error_message', $message);
+        }
         Session::put('page', 'sub-admins');
         $subadmins = Admin::where('type', 'subadmin')->get();
         return view('admin.subadmins.subadmins')->with(compact('subadmins'));
