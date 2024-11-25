@@ -26,6 +26,8 @@ This Website is made out with laravel plateform and it's ecommerce website with 
 ## Frontend
 
 -   Home
+-   Product Listing Page
+    -   category wise, filters
 
 ## Admin Template
 
