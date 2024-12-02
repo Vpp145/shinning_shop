@@ -1,3 +1,4 @@
+<?php use App\Models\ProductsFilter; ?>
 <div class="shop-w-master">
     <h1 class="shop-w-master__heading u-s-m-b-30"><i class="fas fa-filter u-s-m-r-8"></i>
         <span>FILTERS</span>
@@ -896,74 +897,47 @@
                 </div>
             </div>
         </div>
-        <div class="u-s-m-b-30">
-            <div class="shop-w">
-                <div class="shop-w__intro-wrap">
-                    <h1 class="shop-w__h">COLOR</h1>
+        <form id="color-filter-form">
+            <div class="u-s-m-b-30">
+                <div class="shop-w">
+                    <div class="shop-w__intro-wrap">
+                        <h1 class="shop-w__h">COLOR</h1>
 
-                    <span class="fas fa-minus shop-w__toggle" data-target="#s-color" data-toggle="collapse"></span>
-                </div>
-                <div class="shop-w__wrap collapse show" id="s-color">
-                    <ul class="shop-w__list gl-scroll">
-                        <li>
-                            <div class="color__check">
-
-                                <input type="checkbox" id="jet">
-
-                                <label class="color__check-label" for="jet"
-                                    style="background-color: #333333"></label>
-                            </div>
-
-                            <span class="shop-w__total-text">(2)</span>
-                        </li>
-                        <li>
-                            <div class="color__check">
-
-                                <input type="checkbox" id="folly">
-
-                                <label class="color__check-label" for="folly"
-                                    style="background-color: #FF0055"></label>
-                            </div>
-
-                            <span class="shop-w__total-text">(4)</span>
-                        </li>
-                        <li>
-                            <div class="color__check">
-
-                                <input type="checkbox" id="yellow">
-
-                                <label class="color__check-label" for="yellow"
-                                    style="background-color: #FFFF00"></label>
-                            </div>
-
-                            <span class="shop-w__total-text">(6)</span>
-                        </li>
-                        <li>
-                            <div class="color__check">
-
-                                <input type="checkbox" id="granite-gray">
-
-                                <label class="color__check-label" for="granite-gray"
-                                    style="background-color: #605F5E"></label>
-                            </div>
-
-                            <span class="shop-w__total-text">(8)</span>
-                        </li>
-                        <li>
-                            <div class="color__check">
-
-                                <input type="checkbox" id="space-cadet">
-
-                                <label class="color__check-label" for="space-cadet"
-                                    style="background-color: #1D3461"></label>
-                            </div>
-
-                            <span class="shop-w__total-text">(10)</span>
-                        </li>
-                    </ul>
+                        <span class="fas fa-minus shop-w__toggle" data-target="#s-color"
+                            data-toggle="collapse"></span>
+                    </div>
+                    <div class="shop-w__wrap collapse show" id="s-color">
+                        <?php $get_colors = ProductsFilter::get_colors($category_details['catIds']); ?>
+                        <ul class="shop-w__list gl-scroll">
+                            @foreach ($get_colors as $key => $color)
+                                <?php
+                                if (isset($_GET['color']) && !empty($_GET['color'])) {
+                                    $colors = explode('~', $_GET['color']);
+                                    if (!empty($colors) && in_array($color, $colors)) {
+                                        $checked = 'checked';
+                                    } else {
+                                        $checked = '';
+                                    }
+                                } else {
+                                    $checked = '';
+                                }
+                                ?>
+                                <li>
+                                    <div class="color__check">
+                                        <input type="checkbox" name="color" id="color{{ $key }}"
+                                            value="{{ $color }}" {{ $checked }}>
+                                        <label class="color__check-label" for="color{{ $key }}"
+                                            style="background-color: {{ $color }}"
+                                            title="{{ $color }}"></label>
+                                    </div>
+                                    {{ $color }}
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
+        </form>
         <div class="u-s-m-b-30">
             <div class="shop-w">
                 <div class="shop-w__intro-wrap">

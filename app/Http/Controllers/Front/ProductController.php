@@ -35,6 +35,12 @@ class ProductController extends Controller
                     $category_products->orderby('created_at', 'desc');
                 }
             }
+
+            if (isset($_GET['color']) && !empty($_GET['color'])) {
+                $colors = explode('~', $_GET['color']);
+                $category_products->whereIn('family_color', $colors);
+            }
+
             $category_products = $category_products->paginate(8);
 
             return view('front.products.listing')->with(compact('category_products', 'category_details', 'url'));
