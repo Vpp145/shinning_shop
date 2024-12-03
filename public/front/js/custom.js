@@ -14,4 +14,16 @@ $(document).ready(function () {
         );
         $("#color-filter-form").submit();
     });
+
+    $(".size__check input[type='checkbox']").on("change", function () {
+        var sizes = [];
+        $(".size__check input[type='checkbox']:checked").each(function () {
+            sizes.push($(this).val());
+        });
+        var sizeString = sizes.join("~");
+        $("#size-filter-form").append(
+            "<input type='hidden' name='size' value='" + sizeString + "'>"
+        );
+        $("#size-filter-form").submit();
+    });
 });
