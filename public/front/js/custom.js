@@ -26,4 +26,16 @@ $(document).ready(function () {
         );
         $("#size-filter-form").submit();
     });
+
+    $(".brand__check input[type='checkbox']").on("change", function () {
+        var brands = [];
+        $(".brand__check input[type='checkbox']:checked").each(function () {
+            brands.push($(this).val());
+        });
+        var brandString = brands.join("~");
+        $("#brand-filter-form").append(
+            "<input type='hidden' name='brand' value='" + brandString + "'>"
+        );
+        $("#brand-filter-form").submit();
+    });
 });

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Front;
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Controller;
+use App\Models\Brand;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -62,6 +63,13 @@ class ProductController extends Controller
                 $category_products->whereHas('attributes', function ($query) use ($sizes) {
                     $query->whereIn('size', $sizes);
                 });
+            }
+
+            // Filter by brand
+            if (isset($_GET['brand']) && !empty($_GET['brand'])) {
+                $brands = explode('~', $_GET['brand']);
+                $get_brands_ids = Brand::select('id')->whereIn('brand_name', $brands)->pluck('id')->toArray();
+                $category_products->whereIn('brand_id', $get_brands_ids);
             }
 
             // Pagination

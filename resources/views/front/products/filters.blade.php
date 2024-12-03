@@ -725,76 +725,48 @@
                 </div>
             </div>
         </div>
-        <div class="u-s-m-b-30">
-            <div class="shop-w">
-                <div class="shop-w__intro-wrap">
-                    <h1 class="shop-w__h">MANUFACTURER</h1>
-
-                    <span class="fas fa-minus shop-w__toggle" data-target="#s-manufacturer"
-                        data-toggle="collapse"></span>
-                </div>
-                <div class="shop-w__wrap collapse show" id="s-manufacturer">
-                    <ul class="shop-w__list-2">
-                        <li>
-                            <div class="list__content">
-
-                                <input type="checkbox" checked>
-
-                                <span>Calvin Klein</span>
-                            </div>
-
-                            <span class="shop-w__total-text">(23)</span>
-                        </li>
-                        <li>
-                            <div class="list__content">
-
-                                <input type="checkbox">
-
-                                <span>Diesel</span>
-                            </div>
-
-                            <span class="shop-w__total-text">(2)</span>
-                        </li>
-                        <li>
-                            <div class="list__content">
-
-                                <input type="checkbox">
-
-                                <span>Polo</span>
-                            </div>
-
-                            <span class="shop-w__total-text">(2)</span>
-                        </li>
-                        <li>
-                            <div class="list__content">
-
-                                <input type="checkbox">
-
-                                <span>Tommy Hilfiger</span>
-                            </div>
-
-                            <span class="shop-w__total-text">(9)</span>
-                        </li>
-                        <li>
-                            <div class="list__content">
-
-                                <input type="checkbox">
-
-                                <span>Ndoge</span>
-                            </div>
-
-                            <span class="shop-w__total-text">(3)</span>
-                        </li>
-                    </ul>
+        <form id="brand-filter-form">
+            <div class="u-s-m-b-30">
+                <div class="shop-w">
+                    <div class="shop-w__intro-wrap">
+                        <h1 class="shop-w__h">BRANDS</h1>
+                        <span class="fas fa-minus shop-w__toggle" data-target="#s-manufacturer"
+                            data-toggle="collapse"></span>
+                    </div>
+                    <div class="shop-w__wrap collapse show" id="s-manufacturer">
+                        <?php $get_brands = ProductsFilter::get_brands($category_details['catIds']); ?>
+                        <ul class="shop-w__list-2">
+                            @foreach ($get_brands as $key => $brand)
+                                <?php
+                                if (isset($_GET['brand']) && !empty($_GET['brand'])) {
+                                    $brands = explode('~', $_GET['brand']);
+                                    if (!empty($brands) && in_array($brand['brand_name'], $brands)) {
+                                        $checked = 'checked';
+                                    } else {
+                                        $checked = '';
+                                    }
+                                } else {
+                                    $checked = '';
+                                }
+                                ?>
+                                <li>
+                                    <div class="list__content brand__check">
+                                        <input type="checkbox" name="brand" id="brand{{ $key }}"
+                                            value="{{ $brand['brand_name'] }}" {{ $checked }}>
+                                        <span>{{ $brand['brand_name'] }}</span>
+                                    </div>
+                                </li>
+                            @endforeach
+                        </ul>
+                    </div>
                 </div>
             </div>
-        </div>
+        </form>
         <form id="color-filter-form">
             <div class="u-s-m-b-30">
                 <div class="shop-w">
                     <div class="shop-w__intro-wrap">
                         <h1 class="shop-w__h">COLOR</h1>
-
                         <span class="fas fa-minus shop-w__toggle" data-target="#s-color"
                             data-toggle="collapse"></span>
                     </div>
