@@ -63,6 +63,9 @@
     if (!isset($_GET['brand'])) {
         $_GET['brand'] = '';
     }
+    if (!isset($_GET['price'])) {
+        $_GET['price'] = '';
+    }
     ?>
-    {{ $category_products->appends(['sort' => $_GET['sort'], 'color' => $_GET['color'], 'size' => $_GET['size'], 'brand' => $_GET['brand']])->links() }}
+    {{ $category_products->appends(['sort' => $_GET['sort'], 'color' => $_GET['color'], 'size' => $_GET['size'], 'brand' => $_GET['brand'], 'price' => $_GET['price']])->links() }}
 </div>

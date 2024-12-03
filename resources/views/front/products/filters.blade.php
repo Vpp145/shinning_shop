@@ -695,28 +695,28 @@
             <div class="shop-w">
                 <div class="shop-w__intro-wrap">
                     <h1 class="shop-w__h">PRICE</h1>
-
                     <span class="fas fa-minus shop-w__toggle" data-target="#s-price" data-toggle="collapse"></span>
                 </div>
                 <div class="shop-w__wrap collapse show" id="s-price">
-                    <form class="shop-w__form-p">
+                    <?php $get_prices = ProductsFilter::get_prices($category_details['catIds']); ?>
+                    <form id="price-filter-form">
+                        <?php
+                        // Retrieve the query parameters if available
+                        $priceMin = isset($_GET['price_min']) ? htmlspecialchars($_GET['price_min']) : '';
+                        $priceMax = isset($_GET['price_max']) ? htmlspecialchars($_GET['price_max']) : '';
+                        ?>
                         <div class="shop-w__form-p-wrap">
                             <div>
-
                                 <label for="price-min"></label>
-
                                 <input class="input-text input-text--primary-style" type="text" id="price-min"
-                                    placeholder="Min">
+                                    placeholder="Min" value="{{ $priceMin }}">
                             </div>
                             <div>
-
                                 <label for="price-max"></label>
-
                                 <input class="input-text input-text--primary-style" type="text" id="price-max"
-                                    placeholder="Max">
+                                    placeholder="Max" value="{{ $priceMax }}">
                             </div>
                             <div>
-
                                 <button class="btn btn--icon fas fa-angle-right btn--e-transparent-platinum-b-2"
                                     type="submit"></button>
                             </div>

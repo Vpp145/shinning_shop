@@ -33,4 +33,16 @@ class ProductsFilter extends Model
 
         return $get_product_brands;
     }
+
+    public static function get_prices($catIds)
+    {
+        $get_productIds = Product::whereIn('category_id', $catIds)->pluck('id')->toArray();
+        $get_product_prices = Product::whereIn('id', $get_productIds)
+            ->distinct()
+            ->orderBy('final_price', 'asc')
+            ->pluck('final_price')
+            ->toArray();
+
+        return $get_product_prices;
+    }
 }
