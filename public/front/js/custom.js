@@ -38,4 +38,12 @@ $(document).ready(function () {
         );
         $("#brand-filter-form").submit();
     });
+
+    $("#price-filter-form").on("submit", function (e) {
+        e.preventDefault(); // Prevent default submission
+        var min = $("#price-min").val();
+        var max = $("#price-max").val();
+        var query = $.param({ price_min: min, price_max: max });
+        window.location.href = window.location.pathname + "?" + query; // Redirect with parameters
+    });
 });

@@ -72,6 +72,13 @@ class ProductController extends Controller
                 $category_products->whereIn('brand_id', $get_brands_ids);
             }
 
+            // Filtering products based on price range
+            if (isset($_GET['price_min']) && isset($_GET['price_max']) && !empty($_GET['price_min']) && !empty($_GET['price_max'])) {
+                $minPrice = (float)$_GET['price_min'];
+                $maxPrice = (float)$_GET['price_max'];
+                $category_products->whereBetween('final_price', [$minPrice, $maxPrice]);
+            }
+
             // Pagination
             $category_products = $category_products->paginate(8);
 

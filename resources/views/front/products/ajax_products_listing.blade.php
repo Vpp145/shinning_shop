@@ -50,9 +50,22 @@
 @endforeach
 
 <div class="u-s-p-y-60 pagination" id="appendProducts">
-    @if (isset($_GET['sort']))
-        {{ $category_products->appends(['sort' => $_GET['sort']])->links() }}
-    @else
-        {{ $category_products->links() }}
-    @endif
+    <?php
+    if (!isset($_GET['sort'])) {
+        $_GET['sort'] = '';
+    }
+    if (!isset($_GET['color'])) {
+        $_GET['color'] = '';
+    }
+    if (!isset($_GET['size'])) {
+        $_GET['size'] = '';
+    }
+    if (!isset($_GET['brand'])) {
+        $_GET['brand'] = '';
+    }
+    if (!isset($_GET['price'])) {
+        $_GET['price'] = '';
+    }
+    ?>
+    {{ $category_products->appends(['sort' => $_GET['sort'], 'color' => $_GET['color'], 'size' => $_GET['size'], 'brand' => $_GET['brand'], 'price' => $_GET['price']])->links() }}
 </div>
