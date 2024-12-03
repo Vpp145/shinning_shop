@@ -61,15 +61,8 @@
                             </div>
                             <div class="shop-p__collection">
                                 <div class="row is-list-active">
-                                    @include('front.products.ajax_products_lising')
+                                    @include('front.products.ajax_products_listing')
                                 </div>
-                            </div>
-                            <div class="u-s-p-y-60 pagination">
-                                @if (isset($_GET['sort']))
-                                    {{ $category_products->appends(['sort' => $_GET['sort']])->links() }}
-                                @else
-                                    {{ $category_products->links() }}
-                                @endif
                             </div>
                         </div>
                     </div>
